@@ -1,0 +1,100 @@
+@charset "ISO-8859-1";
+#newPostButton
+{
+	text-decoration: none;
+	border: 1px solid black;
+	background-color: #DCDCDC;
+	display: inline-block;
+	margin-left: 3em;
+	padding: 0.2em;
+}
+header
+{
+	background-color: #c1ff2f;
+	height: 100px;
+}
+article
+{
+	background-color: white;
+}
+footer
+{
+	background-color: #c1ff2f;
+	height: 100px;
+}
+.thumbnail
+{
+	float: left;
+	width: 15%;
+	height: 95%;
+	margin-bottom: 2em;
+}
+.desc
+{
+	padding: 0.1em;
+	overflow: hidden;	
+	border: 1px solid black;
+	margin-top: -0.3em;
+	height: 4.5em;
+}
+.post
+{
+	height: 7.2em;
+	border: 1px solid black;
+	padding: 0.2em 0.5em 0.2em 0.5em;
+	width: 80%;
+	margin-left: 3em;
+	margin-top: 0.5em;
+	margin-bottom: 1.5em;
+}
+.commentButton
+{
+	border: 1px solid black;
+	background-color: #DCDCDC;
+	text-decoration: none;
+	display: inline-block;
+	height: 1.5em;
+	margin-top: 1.8em;
+	padding: 0.2em;
+}
+.postDate
+{
+	border: 1px solid black;
+	height: 200px;
+}
+ul
+{
+	list-style-type: none;
+	float: right;
+}
+li
+{
+	display: inline;
+}
+.navButton
+{
+	border: 1px solid black;
+	background-color: #DCDCDC;
+	display: inline-block;
+}
+a
+{
+	text-decoration: none;
+	color: black;
+}
+.things
+{
+	margin-left: 1em;
+	float:left;
+}
+.title
+{
+	font-weight: bold;
+}
+.content
+{
+	float: left;
+	width:70%;
+	margin-left: 1em;
+	margin-top: -0.8em;
+}
