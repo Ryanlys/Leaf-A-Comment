@@ -12,7 +12,7 @@
 		background-color: #debead;
 	}
 	
-	a:link{
+	a{
 		color: #e1ac8d;
 	}
 	form {
@@ -21,6 +21,7 @@
 	button{
 		box-shadow: none;
 		background-color: #FFFFFF;
+		padding: 1em;	
 	}
 	button:hover{
 		background-color: #3b483f;
