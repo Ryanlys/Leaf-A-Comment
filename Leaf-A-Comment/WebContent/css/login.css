@@ -1,35 +1,14 @@
 	
 	@charset "UTF-8";
 	
-	@-ms-viewport{
-  		width: device-width;
-  		height: device-height;
-	}
-	
-	*{
-		background-color: #bbdac0;
-		font-family: "Trebuchet MS", Helvetica, sans-serif;
-		font-size: 18px;
-	}
-	
 	h1{
-		padding-bottom: 1em;
-	}
-	
-	main{
-		margin: 10em;
-		color: white;
-		background-color: #debead;
-	}
-	
-	a{
-		color: #e1ac8d;
-	}
-	a:hover{
-		color: #3b483f;
+		padding-bottom: 0.5em;
+		padding-left: 0.5em;
 	}
 	form {
-		border: none;
+		border: 0.1em solid #debead;
+		padding: 0.7em 0 0 0.7em;
+		width: 17em;
 	}
 	form input{
 		background-color: white;
@@ -37,18 +16,13 @@
 		padding: 0.1em;
 		font-size: 1em;
 	}
-	#username, #password {
-		margin: 0 0 0.5em 0.5em;
+	p {
+		margin-bottom: 0.5em;
 	}
-	button{
-		box-shadow: none;
-		background-color: #debead;
-		color: white;
-		padding: 0.5em;
-		margin: 0 0 0.5em 0.5em;
+	#help{
+	padding-top: 0.5em;
 	}
-	button:hover{
-		background-color: #3b483f;
-		color: white;
+	#help p, a{
+	font-size: 0.7em;
 	}
 

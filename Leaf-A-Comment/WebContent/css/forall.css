@@ -1,1 +1,38 @@
+	
+	@charset "UTF-8";
+	
+	@-ms-viewport{
+  		width: device-width;
+  		height: device-height;
+	}
+	
+	*{
+		background-color: #bbdac0;
+		font-family: "Trebuchet MS", Helvetica, sans-serif;
+		font-size: 18px;
+	}
+	
+	main{
+		margin: 10em;
+		color: white;
+	}
+	
+	a{
+		color: #e1ac8d;
+	}
+	a:hover{
+		color: #3b483f;
+	}
+	button{
+		box-shadow: none;
+		background-color: #debead;
+		color: white;
+		padding: 0.5em;
+		margin: 0 0 0.5em 0.5em;
+	}
+	button:hover{
+		background-color: #3b483f;
+		color: white;
+	}
+
 
