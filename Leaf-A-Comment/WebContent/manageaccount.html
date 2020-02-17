@@ -2,6 +2,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/forall.css">
+<link rel="stylesheet" href="css/login.css">
 <title>manageaccount page</title>
 </head>
 <body>
@@ -10,10 +13,10 @@
 	</header>
 	
 	<main>
-	
+		<h1>hello there (insert name)</h1>
+		
 		<form method="post" action="">
 		<fieldset>
-		<legend>hello there (insert name)</legend>
 		
 		<p id="username">
 			<label>change username:</label>
@@ -28,10 +31,12 @@
 		<p id="oldpassword">
 			<label>old password:</label>
 			<input type="password" name="oldpassword">
-			<br/>
-			<a href="">forgot your password?</a>
-		</p>
-		
+		</p>	
+		<div id="help">
+				<p>did forgot your password? that's ok
+				<a href="">click here to reset</a>
+				</p>
+		</div>
 		
 		<p id="newpassword">
 			<label>new password:</label>
@@ -43,8 +48,8 @@
 			<input type="password" name="repassword">
 		</p>
 		
-		<button type="submit">signup</button>
-		<input type="reset">
+		<button type="submit">change</button>
+		<button type="reset">reset</button>
 		
 		</fieldset>
 		</form>
