@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+*{
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+main{
+	margin: 20em;
+	color: white;
+	background-color: #debead;
+}
+
+a:link{
+	color: #e1ac8d;
+}
+form {
+	border: 1px solid white;
+}
+button{
+	box-shadow: none;
+	background-color: #FFFFFF;
+}
+button:hover{
+	background-color: #3b483f;
+}
+
