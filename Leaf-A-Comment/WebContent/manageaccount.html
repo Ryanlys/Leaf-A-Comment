@@ -11,7 +11,9 @@
 	
 	<main>
 	
-		<p> hello there (insert name) </p>
+		<form method="post" action="">
+		<fieldset>
+		<legend>hello there (insert name)</legend>
 		
 		<p id="username">
 			<label>change username:</label>
@@ -26,7 +28,10 @@
 		<p id="oldpassword">
 			<label>old password:</label>
 			<input type="password" name="oldpassword">
+			<br/>
+			<a href="">forgot your password?</a>
 		</p>
+		
 		
 		<p id="newpassword">
 			<label>new password:</label>
@@ -38,10 +43,13 @@
 			<input type="password" name="repassword">
 		</p>
 		
-		<input type="submit">
+		<button type="submit">signup</button>
 		<input type="reset">
-		<br/>
-		<a href="">forgot your password?</a>
+		
+		</fieldset>
+		</form>
+		
+		
 	
 	</main>
 
