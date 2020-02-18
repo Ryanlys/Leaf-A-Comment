@@ -2,16 +2,34 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/forall.css">
+<link rel="stylesheet" href="css/login.css">
 <title>manageaccount page</title>
 </head>
 <body>
 
-	<header>
+	<header id="top">
+	
+		<img id="logo" alt="whoops" src="images/logo.png">
+		
+		<form id="search" method="get" action="search.php">
+			<input type="text" name="search" placeholder="type in keyword"><button type="submit">search</button>
+		</form>
+		
+		<nav>
+			<ul>
+				<li class="navButton"><a href="main.html"><button>Home</button></a></li>
+			</ul>
+		</nav>
+		
 	</header>
 	
 	<main>
-	
-		<p> hello there (insert name) </p>
+		<h1>hello there (insert name)</h1>
+		
+		<form method="post" action="">
+		<fieldset>
 		
 		<p id="username">
 			<label>change username:</label>
@@ -26,7 +44,12 @@
 		<p id="oldpassword">
 			<label>old password:</label>
 			<input type="password" name="oldpassword">
-		</p>
+		</p>	
+		<div id="help">
+				<p>did forgot your password? that's ok
+				<a href="">click here to reset</a>
+				</p>
+		</div>
 		
 		<p id="newpassword">
 			<label>new password:</label>
@@ -38,12 +61,16 @@
 			<input type="password" name="repassword">
 		</p>
 		
-		<input type="submit">
-		<input type="reset">
-		<br/>
-		<a href="">forgot your password?</a>
-	
+		<button type="submit">change</button>
+		<button type="reset">reset</button>
+		
+		</fieldset>
+		</form>
 	</main>
+	<footer>
+		<p>2020 &copy; Leaf A Comment</p>
+		<a href="#top">back to top</a></span></p>
+	</footer>
 
 </body>
 </html>

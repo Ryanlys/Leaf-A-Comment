@@ -1,0 +1,91 @@
+	
+	@charset "UTF-8";
+	
+	@-ms-viewport{
+  		width: device-width;
+  		height: device-height;
+	}
+	
+	*{
+		background-color: #bbdac0;
+	}
+	
+	main{
+		background-color: #bbdac0;
+		font-family: "Trebuchet MS", Helvetica, sans-serif;
+		font-size: 18px;
+		padding: 3.5em 0em 7em 0.5em;
+		color: white;
+		margin-right: 110px;
+		margin-left: 110px;
+	}
+	
+	form {
+		border: 0.1em solid #debead;
+		padding: 0.7em 0 0 0.7em;
+	}
+	form input{
+		background-color: white;
+		color: black;
+		padding: 0.1em;
+		font-size: 1em;
+	}
+	
+	a{
+		color: #e1ac8d;
+	}
+	a:hover{
+		color: #3b483f;
+	}
+	button{
+		box-shadow: none;
+		background-color: #debead;
+		color: white;
+		padding: 0.5em;
+		margin: 0 0 0.5em 0.5em;
+	}
+	button:hover{
+		background-color: #3b483f;
+		color: white;
+	}
+	ul{
+		list-style-type: none;
+		float:right;
+		font-size: 1.2em;
+		padding-top:0.7em;
+		padding-right: 0.3em;
+	}
+	li{
+		display: inline;
+	}
+	#search{
+		width: 17em;
+		float: right;
+		margin: 0.5em;
+		margin-right: 110px;
+	}
+	header{
+		border-bottom: 5px solid white;
+		height: 100px;
+		padding-top: 1.2em;
+		overflow: scroll;
+	}
+	#logo{
+		width: 230px;
+		float: left;
+		padding-bottom: 1em;
+		margin-left: 110px; 
+	}
+	footer{
+		border-top: 5px solid white;
+		height: 100px;
+		padding-bottom: 1.2em;
+		color: white;
+		padding-right: 110px;
+		padding-left: 110px;
+		padding-top: 1.2em;
+	}
+
+	
+
+

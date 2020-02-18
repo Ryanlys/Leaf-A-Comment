@@ -1,0 +1,13 @@
+	
+	@charset "UTF-8";
+	
+	h1{
+		padding-bottom: 0.5em;
+		padding-left: 0.5em;
+	}
+	p {
+		margin-bottom: 0.5em;
+	}
+	#help{
+	padding-top: 0.5em;
+	}
