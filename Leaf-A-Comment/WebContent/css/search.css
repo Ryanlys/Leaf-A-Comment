@@ -22,17 +22,19 @@ footer
 }
 .desc
 {
-	padding: 0.1em;
+	padding: 0 0 0 0.7em;
 	overflow: hidden;	
-	border: 1px solid black;
-	margin-top: -0.3em;
+	border-top: 0.1em solid #debead;
+	border-left: 0.1em solid #debead;
+	border-right: 0.1em solid #debead;
 	height: 4.5em;
+
 }
 .post
 {
 	height: 8em;
-	border: 1px solid black;
-	padding: 0.2em 0.5em 0.2em 0.5em;
+	border: 0.1em solid #debead;
+	padding: 0.7em 0 0 0.7em;
 	width: 80%;
 	margin-left: 3em;
 	margin-top: 2em;
@@ -43,10 +45,10 @@ footer
 	display: inline-block;
 	height: 1.5em;
 	margin-top: 1.5em;
+	margin-right: 0.2em;
 }
 .postDate
 {
-	border: 1px solid black;
 	height: 200px;
 }
 ul
@@ -59,19 +61,13 @@ li
 	display: inline;
 }
 
-a
-{
-	text-decoration: none;
-	color: black;
-}
 .things
 {
 	margin-left: 1em;
 	float:left;
 }
-.title
-{
-	font-weight: bold;
+h1{
+	margin-bottom: 0.5em;
 }
 .content
 {
