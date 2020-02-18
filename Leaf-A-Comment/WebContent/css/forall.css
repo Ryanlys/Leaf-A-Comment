@@ -8,11 +8,11 @@
 	
 	*{
 		background-color: #bbdac0;
+		font-family: "Trebuchet MS", Helvetica, sans-serif;
 	}
 	
 	main{
 		background-color: #bbdac0;
-		font-family: "Trebuchet MS", Helvetica, sans-serif;
 		font-size: 18px;
 		padding: 3.5em 0em 7em 0.5em;
 		color: white;
