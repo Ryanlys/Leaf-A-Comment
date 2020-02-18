@@ -4,45 +4,29 @@
 <meta charset="ISO-8859-1">
 <title>Leaf A Comment</title>
 <link rel="stylesheet" href="css/forall.css">
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/search.css">
 </head>
 <body>
-	<header>
+	<header id="top">
 		<img id="logo" alt="whoops" src="images/logo.png">
 		<nav>
-			<form id="search" method="get" action="search.php">
-			<input type="text" name="search" placeholder="type in keyword"><button type="submit">search</button>
-			</form>
 			<ul>
 				<li class="navButton"><a href="main.html"><button>Home</button></a></li>
 				<li class="navButton"><a href="account.html"><button>Account</button></a></li>
 				<li class="navButton"><a href="login.html"><button>Log In</button></a></li>
-			</ul>
-			
-			
+			</ul>	
 		</nav>
 	</header>
 	
 	<main>
-		<p><a href="newPost.html" id=newPostButton><button>New Post</button></a></p><br>
-		<article class="post">
-			<img class="thumbnail" src="images/leaf.jpg">
-			<div class="content">
-				<p class="title">
-					This is a leaf.
-				</p>
-				<p class="desc">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat sed magna in molestie. Morbi diam lacus, tempor ut ligula nec,
-					 feugiat gravida lacus. Cras aliquet nunc eu sem rutrum porta.
-					 Ut commodo ex vestibulum dui feugiat, eget imperdiet massa congue. Integer laoreet eleifend mi, vel luctus purus ornare ut.
-				</p>
-			</div>
-			<p class="things">
-				<time datetime="2020-02-16">2020/2/16</time><br>
-				<a href="samplePost.html" class="commentButton"><button>Comment</button></a>
-			</p>
-		</article>
-		
+		<p><a href="newPost.html" id=newPostButton><button>New Post</button></a>
+		<form id="search" method="get" action="search.php">
+			<input id="searchBar" type="text" name="search" placeholder="type in keyword"><button type="submit">Search</button>
+		</form>
+		</p>
+		<br>
+		<br>
+		<br>
 		<article class="post">
 			<img class="thumbnail" src="images/leaf2.jpg">
 			<div class="content">
@@ -82,27 +66,9 @@
 			</p>
 		</article>
 		
-		<article class="post">
-			<img class="thumbnail" src="images/leaf4.jpg">
-			<div class="content">
-				<p class="title">
-					This is a leaf.
-				</p>
-				<p class="desc">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices luctus rhoncus. Vestibulum lobortis,
-					 dui ut faucibus feugiat, nisi leo ultricies dolor, id volutpat augue orci ut nisi. Proin hendrerit eu quam eget tempor.
-					 Maecenas arcu elit, tempus vitae sodales quis, consectetur et ipsum. Vestibulum ante ipsum primis in faucibus.
-				</p>
-			</div>
-			<p class="things">
-				<time datetime="2020-02-16">2020/2/16</time><br>
-				<a href="samplePost.html" class="commentButton"><button>Comment</button></a>
-			</p>
-		</article>
 	</main>
 	
 	<footer>
-		
 		<nav>
 			<form id="search" method="get" action="search.php">
 			<input type="text" name="search" placeholder="type in keyword"><button type="submit">search</button>
@@ -114,6 +80,7 @@
 			</ul>
 		</nav>
 		<p>2020 &copy; Leaf A Comment</p>
+		<a href="#top">back to top</a></span></p>
 	</footer>
 
 </body>

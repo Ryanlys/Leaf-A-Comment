@@ -84,4 +84,21 @@ a
 {
 	margin-left: 3em;
 	margin-bottom: 0.5em;
+	float: left;
+	display: inline-block;
+}
+#searchBar
+{
+	width: 50%;
+	margin-left: 3em;
+}
+#search
+{
+	width: 40%;
+	float: left;
+	margin-left: 3em;
+}
+nav
+{
+	margin-right: 3em;
 }

@@ -68,7 +68,7 @@
 		border-bottom: 5px solid white;
 		height: 100px;
 		padding-top: 1.2em;
-		overflow: scroll;
+		overflow: hidden;
 	}
 	#logo{
 		width: 230px;
