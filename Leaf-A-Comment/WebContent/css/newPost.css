@@ -1,0 +1,40 @@
+@charset "ISO-8859-1";
+
+header
+{
+	height: 100px;
+	overflow: hidden;
+}
+article
+{
+	background-color: #bbdac0;
+}
+footer
+{
+	height: 100px;
+}
+ul
+{
+	list-style-type: none;
+	float: right;
+}
+li
+{
+	display: inline;
+}
+
+a
+{
+	text-decoration: none;
+	color: black;
+}
+.things
+{
+	margin-left: 1em;
+	float:left;
+}
+textarea
+{
+	background-color: white;
+	overflow: auto;
+}
