@@ -41,7 +41,8 @@ footer
 }
 .things
 {
-	border: 0.1em solid #debead;
+	border-bottom: 0.1em solid #debead;
+	border-left: 0.1em solid #debead;
 	padding: 0.2em 0.2em 0.2em 0.2em;
 }
 ul
@@ -78,6 +79,8 @@ h1{
 .comment
 {
 	margin-left: 3em;
+	padding-top: 0.25em;
+	font-size: 0.85em;
 }
 
 .comments div
@@ -92,4 +95,7 @@ h1{
 {
 	border-collapse: collapse;
 	margin-left: 6em;
+}
+time{
+	font-weight: normal;
 }
