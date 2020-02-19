@@ -22,11 +22,7 @@ footer
 }
 .desc
 {
-	padding: 0 0 0 0.7em;
 	overflow: hidden;	
-	border-top: 0.1em solid #debead;
-	border-left: 0.1em solid #debead;
-	border-right: 0.1em solid #debead;
 	height: 4.5em;
 
 }
