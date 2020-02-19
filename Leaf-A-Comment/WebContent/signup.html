@@ -5,6 +5,24 @@
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/forall.css">
 <link rel="stylesheet" href="css/login.css">
+
+<script type="text/javascript">
+
+	function validateForm(){
+		
+		var e = document.signup.password.value;
+		var f = document.signup.repassword.value;
+		
+		if(e != f){
+			alert("passwords don't match, please retype, thanks!");
+			return false;
+		} else{
+			return true;
+		}
+	}
+
+</script>
+
 <title>signup page</title>
 </head>
 <body>
@@ -28,38 +46,38 @@
 	
 		<h1>hi! please fill in the information below to create an account. thanks!</h1>
 	
-		<form method="post" action="">
+		<form name="signup" method="post" action="https://www.randyconnolly.com/tests/process.php" onSubmit="return validateForm()">
 		
 			<fieldset>
 			
 				<p id="firstname">
 					<label>first name:</label>
-					<input type="text" name="firstname">
+					<input type="text" name="firstname" required>
 				</p>
 				
-				<p id="last name">
+				<p id="lastname">
 					<label>last name:</label>
-					<input type="text" name="lastname">
+					<input type="text" name="lastname" required>
 				</p>
 				
 				<p id="username">
 					<label>username:</label>
-					<input type="text" name="username">
+					<input type="text" name="username" required>
 				</p>
 				
 				<p id="email">
 					<label>email:</label>
-					<input type="email" name="email">
+					<input type="email" name="email" required>
 				</p>
 				
 				<p id="password">
 					<label>password:</label>
-					<input type="password" name="password">
+					<input type="password" name="password" required>
 				</p>
 				
 				<p id="repassword">
 					<label>retype password:</label>
-					<input type="password" name="repassword">
+					<input type="password" name="repassword" required>
 				</p>
 				
 				<button type="submit">signup</button>
