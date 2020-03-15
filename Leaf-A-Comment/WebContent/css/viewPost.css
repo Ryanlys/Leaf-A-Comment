@@ -22,19 +22,14 @@ footer
 }
 .desc
 {
-	padding: 0.1em;
+	padding: 0.1em 0.7em 0.7em 0;
 	overflow: auto;	
-	border: 1px solid black;
 	margin-top: -0.3em;
 }
 .post
 {
-
-	border: 1px solid black;
-	padding: 0.2em 0.5em 0.2em 0.5em;
-	width: 80%;
-	margin-left: 3em;
-	margin-top: 2em;
+	border: 0.1em solid #debead;
+	padding: 0.7em 0 0.7em 0.7em;
 	margin-bottom: 2em;
 	overflow: auto;
 }
@@ -44,10 +39,11 @@ footer
 	height: 1.5em;
 	margin-top: 1.5em;
 }
-.postDate
+.things
 {
-	border: 1px solid black;
-	height: 200px;
+	border-bottom: 0.1em solid #debead;
+	border-left: 0.1em solid #debead;
+	padding: 0.2em 0.2em 0.2em 0.2em;
 }
 ul
 {
@@ -59,19 +55,13 @@ li
 	display: inline;
 }
 
-a
-{
-	text-decoration: none;
-	color: black;
-}
 .things
 {
 	margin-left: 1em;
 	float:left;
 }
-.title
-{
-	font-weight: bold;
+h1{
+	margin-bottom: 0.5em;
 }
 .content
 {
@@ -79,11 +69,7 @@ a
 	width:70%;
 	margin-left: 1em;
 }
-#newPostButton
-{
-	margin-left: 3em;
-	margin-bottom: 0.5em;
-}
+
 .user
 {
 	font-style: italic;
@@ -93,21 +79,23 @@ a
 .comment
 {
 	margin-left: 3em;
+	padding-top: 0.25em;
+	font-size: 0.85em;
 }
 
 .comments div
 {
-	border: 1px solid black;
+	border: 0.1em solid #debead;
+	padding: 0.7em 0 0.7em 0.7em;
 	margin-top: 2em;
-	width: 80%;
-	margin-left: 3em;
 	overflow: auto;
 	border-collapse: collapse;
 }
 .reply
 {
 	border-collapse: collapse;
-	width: 80%;
 	margin-left: 6em;
-	margin-top: -2em;
+}
+time{
+	font-weight: normal;
 }

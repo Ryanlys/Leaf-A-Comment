@@ -22,12 +22,6 @@ li
 {
 	display: inline;
 }
-
-a
-{
-	text-decoration: none;
-	color: black;
-}
 .things
 {
 	margin-left: 1em;
@@ -38,3 +32,12 @@ textarea
 	background-color: white;
 	overflow: auto;
 }
+	legend{
+		padding-bottom: 1em;
+		padding-top: 0.5em;
+		font-weight: bold;
+		font-size: 1.2em;
+	}
+	fieldset{
+		padding-left: 0.5em;
+	}

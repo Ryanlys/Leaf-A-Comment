@@ -23,11 +23,6 @@ li
 	display: inline;
 }
 
-a
-{
-	text-decoration: none;
-	color: black;
-}
 .things
 {
 	margin-left: 1em;
@@ -42,3 +37,13 @@ textarea
 {
 	margin-left: 10em;
 }
+
+	legend{
+		padding-bottom: 1em;
+		padding-top: 0.5em;
+		font-weight: bold;
+		font-size: 1.2em;
+	}
+	fieldset{
+		padding-left: 0.5em;
+	}

@@ -5,6 +5,22 @@
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/forall.css">
 <link rel="stylesheet" href="css/login.css">
+<script type="text/javascript">
+
+	function validateForm(){
+		
+		var e = document.manage.newpassword.value;
+		var f = document.manage.renewpassword.value;
+		
+		if(e != f){
+			alert("passwords don't match, please retype, thanks!");
+			return false;
+		} else{
+			return true;
+		}
+	}
+
+</script>
 <title>manageaccount page</title>
 </head>
 <body>
@@ -20,6 +36,7 @@
 		<nav>
 			<ul>
 				<li class="navButton"><a href="main.html"><button>Home</button></a></li>
+				<li class="navButton"><a href="main.html"><button>Logout</button></a></li>
 			</ul>
 		</nav>
 		
@@ -28,7 +45,7 @@
 	<main>
 		<h1>hello there (insert name)</h1>
 		
-		<form method="post" action="">
+		<form name="manage" method="post" action="http://www.randyconnolly.com/tests/process.php" onSubmit="return validateForm()">
 		<fieldset>
 		
 		<p id="username">
@@ -58,7 +75,7 @@
 		
 		<p id="repassword">
 			<label>retype new password:</label>
-			<input type="password" name="repassword">
+			<input type="password" name="renewpassword">
 		</p>
 		
 		<button type="submit">change</button>
