@@ -9,7 +9,10 @@
     $mysqli = new mysqli("localhost", "root","", "test");
     
     if($mysqli -> connect_errno){
+        echo "error";
         exit();
+    } else{
+        echo "Connected! \n";
     }
     
     $username = $_REQUEST["username"];
@@ -24,18 +27,18 @@
             $b = $fieldinfo -> table;
             if ($a == $username && $b == password){
                 $_SESSION["loggedIn"] = true;
+                echo $a + " " + $b;
                 $c = $fieldinfo -> userid;
                 if ($c == 1)
                     $admin = true;
             }
         }
-        $result -> free_result();
-        
+        $result -> free_result();   
+    } else{
+        echo "Please signup!";
     }
 
 ?>
 
 </body>
 </html>
-
-
