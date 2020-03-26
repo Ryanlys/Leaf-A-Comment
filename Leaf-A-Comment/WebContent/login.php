@@ -37,6 +37,9 @@
     } else{
         echo "Please signup!";
     }
+    
+    $sql -> close();
+    $mysqli -> close();
 
 ?>
 

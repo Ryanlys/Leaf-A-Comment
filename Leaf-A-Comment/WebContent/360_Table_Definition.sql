@@ -19,3 +19,5 @@ users
   password
   bio
   email
+  firstname
+  lastname
