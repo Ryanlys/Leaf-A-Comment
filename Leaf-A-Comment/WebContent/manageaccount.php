@@ -21,7 +21,6 @@
     $email = $_REQUEST["email"];
     $oldpassword = $_REQUEST["oldpassword"];
     $newpassword = $_REQUEST["newpassword"];
-    $repassword = $_REQUEST["repassword"];
     
     $exist=false;
     $verified=true;
