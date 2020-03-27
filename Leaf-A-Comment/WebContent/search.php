@@ -6,7 +6,7 @@
 	$password = "";
 	$dbName = "test";
 
-	$keyword = $_REQUEST["keyword"];
+	$keyword = $_REQUEST["search"];
 	if (is_null($keyword))
 	{
 		$keyword = "%%";
@@ -17,12 +17,8 @@
 	}
 
 	$conn = mysqli_connect($servername,$dbUsername,$password,$dbName);
-	$sql = "select pid,title,body,img,postDate,users.username, from posts, users where posts.uid = users.uid and title like $keyword";
-	$stmt = mysqli_prepare($conn,$sql);
-	mysqli_stmt_bind_param($stmt,"i",$_GET["pid"]);
-	mysqli_stmt_execute($stmt);
-
-	$result = mysqli_stmt_get_result($stmt);
+	$sql = "select pid,title,body,img,postDate,users.username from posts, users where posts.uid = users.uid and title like '$keyword'";
+	$result = mysqli_query($conn,$sql);
 	
 
 ?>
@@ -53,9 +49,10 @@
 			<input id="searchBar" type="text" name="search" placeholder="type in keyword"><button type="submit">Search</button>
 		</form>
 		</p>
+		<br>
 
 		<?php
-			while($getData = mysqli_fetch_assoc($result);)
+			while($getData = mysqli_fetch_assoc($result))
 			{
 				$pid = $getData["pid"];
 				$title = $getData["title"];
@@ -64,31 +61,31 @@
 				$date = $getData["postDate"];
 				$username = $getData["username"];
 
-				echo "<article class='post'><img class='thumbnail' src='images/$img'><div class='content'><h1>$title</h1>
-				<p class='desc'>$desc</p></div> <p class='things'><time datetime='$date'>$date</time><br>
-				<a href='viewpost.php?pid=$pid' class='commentButton'><button> View</button></a>";
+				/*
+				echo "\n<article class='post'>\n<img class='thumbnail' src='images/$img'>\n<div class='content'>\n<h1>$title</h1>";
+				echo "<p class='desc'>$desc</p>\n</div>\n<p class='things'>\n<time datetime='$date'>$date</time><br>";
+				echo "<a href='viewpost.php?pid=$pid' class='commentButton'><button> View</button></a>\n</p>\n</article>\n";*/
 			}
+			mysqli_close($conn); 
 
 		?>
 		
-		<article class="post">
-			<img class="thumbnail" src="images/leaf3.jpg">
-			<div class="content">
+		<article class='post'>
+			<img class='thumbnail' src='images/leaf2.jpg'>
+			<div class='content'>
 				<h1>
-					This is a leaf.
+					test
 				</h1>
-				<p class="desc">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis vitae elit non commodo. Fusce vitae diam eu neque porttitor.
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dui neque, pellentesque vel elit sit amet, vestibulum finibus velit. Curabitur tellus nisl, pellentesque non magna eu, 
-					varius posuere dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per.
-				</p>	
+				<p class='desc'>
+					test
+				</p>
 			</div>
-			<p class="things">
-				<time datetime="2020-02-16">2020/2/16</time><br>
-				<a href="samplePost.html" class="commentButton"><button>Comment</button></a>
+			<p class='things'>
+				<time datetime='2017-11-11'>2017-11-11</time><br>
+				<a href='viewpost.php?pid=3' class='commentButton'><button> View</button></a>
 			</p>
 		</article>
-		
+
 	</main>
 	
 	<footer>

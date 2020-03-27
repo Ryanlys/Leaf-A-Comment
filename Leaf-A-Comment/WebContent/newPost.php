@@ -1,8 +1,7 @@
 <?php
 	session_start();
-	//$username = $_SESSION["username"];
 
-	$uid = 1;
+	$uid = 1; //to be removed
 	$title = $_REQUEST["title"];
 	$desc = $_REQUEST["desc"];
 
@@ -22,13 +21,11 @@
 		die("Connection failed: ".mysqli_connect_error());
 	} 
 
-	$sql = "insert into posts(uid,numComment,title,body,postDate) values (?,?,?,?,?);";
+	$sql = "insert into posts(uid,numComment,title,body,img) values (?,?,?,?,?);";
 	if($stmt = mysqli_prepare($conn,$sql))
 	{
-		$date = "\"".date("Y-m-d")."\"";
-		echo "date is ".$date;
 		$numCom = 0;
-		mysqli_stmt_bind_param($stmt,'iissb',$uid,$numCom,$title,$desc,$date);
+		mysqli_stmt_bind_param($stmt,'iisbs',$uid,$numCom,$title,$desc,$_FILES["pic"]["name"]);
 		mysqli_stmt_execute($stmt);
 
 		$sql = "select last_insert_id()";
@@ -47,6 +44,19 @@
 		echo "Error: ".$sql."<br>".mysqli_error($conn);
 	}
 	
-	$_SESSION["loggedIn"] = true;
+	///////////////////////////////////////////////////////////////////////////////////////////
+	if ($_FILES["pic"]["error"] > 0)
+  	{
+  		echo "Error: " . $_FILES["pic"]["error"] . "<br>";
+  	}
+  	else
+  	{
+  		if (!file_exists("C:\\xampp\\htdocs\\360\\images\\userimg\\".$_FILES["pic"]["name"]))
+  		{
+  			move_uploaded_file($_FILES["pic"]["tmp_name"], "C:\\xampp\\htdocs\\360\\images\\userimg\\".$_FILES["pic"]["name"]);
+  		}
+		
+	}
+	
 	header("Location: viewPost.php?pid=$postId"); 
 ?>

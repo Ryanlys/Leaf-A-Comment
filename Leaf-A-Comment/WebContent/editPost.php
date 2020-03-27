@@ -24,9 +24,7 @@
 	$username = $getData["username"];
 	$postOwner = $getData["uid"];
 
-	$pid = $_GET["pid"];
-
-
+	$_SESSION["pid"] = $_GET["pid"];
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,7 +36,10 @@
 <link rel="stylesheet" href="css/viewPost.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="js/jquery-3.4.1.min.js"></script>
-<script type='text/javascript' src='js/viewPost.js'></script>;	
+<script type="text/javascript" src="js/editPost.js"></script>
+<style>
+	#delete {margin-top: 2em;}
+</style>
 </head>
 <body>
 	<header>
@@ -52,10 +53,11 @@
 				<li class="navButton"><a href="manageaccount.html"><button>Account</button></a></li>
 				<li class="navButton"><a href= <?php if($_SESSION["loggedIn"]) {echo "\"logout.php\" ><button> Log Out </button>";} else {echo "\"login.html\" ><button>Log In</button>";} ?> </a></li>
 			</ul>
+			
+			
 		</nav>
 	</header>
 	<main>
-		<p><a href="newPost.html" id=newPostButton><button>New Post</button></a></p><br>
 		<article class="post">
 			<?php 
 				if($img != null)
@@ -64,68 +66,21 @@
 				}
 			?>
 			<div class="content">
-				<h1>
-					<?php
-						echo $title;
-					?>
-				</h1>
-				<p class="desc" id="description">
-					<?php
-						echo $desc;
-					?>
-				</p>
+				<form method="post" action="editPost2.php" id="form" enctype="multipart/form-data">
+					<fieldset>
+						<legend>Edit Post</legend>
+						<label>Title</label>
+						<input type="text" name="title" <?php echo " value='$title'";?> > <br><br>
+						<label>Description</label><br>
+						<textarea rows="5" cols="50" name="desc"><?php echo $desc;?></textarea> <br><br>
+					</fieldset>
+					<br>
+					<button type="submit" id="submitEdit">Submit</button>
+					<button type="button" id="cancelEdit">Cancel</button> <br><br><br><br>		
+				</form>
+				<button id="delete">Delete</button>
 			</div>
-			<p class="things">
-				<time datetime=<?php echo "'$date'>$date"?></time><br>
-				<?php 
-					echo "<a href=\"\">$username</a><br>";
-				?>
-			</p>
 		</article>
-		<?php
-			if($loggedIn && ($uid == $postOwner || $admin == true))
-			{
-				echo "<section><button id='mainReply'> Reply </button> <a href='editPost.php?pid=$pid'><button id='editPost'> Edit </button></a></section>";
-			}
-			else
-			{
-				echo "<section><button id='mainReply'> Reply </button></section>";
-			}
-		?>	
-		<section class="comments">
-			<?php
-				$sql = "select body,parent,cid,commentDate,username,depth,comments.uid from comments, users where pid = ? and comments.uid = users.uid order by parent asc";
-				$stmt = mysqli_prepare($conn,$sql);
-				mysqli_stmt_bind_param($stmt,"i",$_GET["pid"]);
-				mysqli_stmt_execute($stmt);
-
-				$result = mysqli_stmt_get_result($stmt);
-
-				while($getData = mysqli_fetch_assoc($result))
-				{
-					$body = $getData["body"];
-					$date = $getData["commentDate"];
-					$uname = $getData["username"];
-					$cid = $getData["cid"];
-					$depth = $getData["depth"];
-					$parent = $getData["parent"];
-					$commentOwner = $getData["uid"];
-
-					if ($uid == $commentOwner)
-					{
-						echo "<div class='divComment'id='$cid' data-depth='$depth' data-parent='$parent'><p class='user'>$uname <time datetime='$date'>$date</time></p><br>";
-						echo "<p class='comment'>$body</p><br><button class='replyButton'>Reply</button><button class='editComment'>Edit</button></div><br>";
-					}
-					else
-					{
-						echo "<div class='divComment'id='$cid' data-depth='$depth' data-parent='$parent'><p class='user'>$uname <time datetime='$date'>$date</time></p><br>";
-						echo "<p class='comment'>$body</p><br><button class='replyButton'>Reply</button></div><br>";
-					}
-					
-				};
-			?>
-		</section>
-
 	</main>
 	
 	<footer>

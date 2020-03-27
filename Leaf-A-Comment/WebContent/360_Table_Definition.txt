@@ -1,0 +1,47 @@
+drop table if exists comments ;
+drop table if exists posts ;
+drop table if exists users ;
+
+create table users (
+uid int auto_increment,
+username varchar(16),
+pass varchar(16),
+bio varchar(255),
+email varchar(32),
+primary key (uid)
+);
+
+create table posts (
+uid int, 
+postDate timestamp not null default current_timestamp,
+numComment int,
+title varchar(32),
+body text,
+img varchar(32),
+pid int auto_increment,
+primary key (pid),
+foreign key (uid) references users(uid) on delete cascade
+);
+
+
+create table comments(
+body varchar(255),
+parent int default 0,
+pid int,
+uid int,
+commentDate timestamp not null default current_timestamp,
+depth int default 0,
+cid int auto_increment,
+primary key (cid),
+foreign key (pid) references posts(pid) on delete cascade,
+foreign key (uid) references users(uid) on delete cascade
+);
+
+create table admins(
+uid int);
+
+insert into users(username, pass, bio, email) values ('Ryan', 'test', 'test', 'ryan@email.com');
+insert into users(username, pass, bio, email) values ('Bob', 'test', 'test', 'bob@email.com');
+insert into users(username, pass, bio, email) values ('John', 'test', 'test', 'john@email.com');
+
+insert into posts(numComment, title, body, uid, img) values (0, 'My first post', 'This is my very first post',1,"leaf2.jpg");

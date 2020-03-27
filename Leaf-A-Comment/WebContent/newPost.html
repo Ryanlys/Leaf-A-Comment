@@ -25,18 +25,19 @@
 	</header>
 	<main>
 
-		<form method="post" action="newPost.php">
+		<form method="post" action="newPost.php" enctype="multipart/form-data">
 			<fieldset>
 				<legend>New Post</legend>
 				<label>Title</label>
 				<input type="text" name="title"> <br><br>
 				<label>Description</label><br>
 				<textarea rows="5" cols="50" name="desc"></textarea> <br><br>
-				<button>Upload File</button>
+				<label>Select a file</label> <br>
+				<input type="file" name="pic" accept="image/png, image/jpeg">
 			</fieldset>
 			<br>
 			<button type="submit">Submit</button>
-			<a href="main.html"><button>Cancel</button></a>
+			<button type="button">Cancel</button>
 		</form>
 		
 	</main>
