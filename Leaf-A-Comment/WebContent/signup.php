@@ -45,7 +45,7 @@
         echo "We got you ".$firstname. " !";
         $stmt -> close();
     } else
-        echo "failure to add you :(";
+        echo "Failed to add you :(";
     
     $mysqli -> close();
 
