@@ -4,9 +4,10 @@ drop table if exists users ;
 
 create table users (
 uid int auto_increment,
+firstname varchar(100),
+lastname varchar(100),
 username varchar(16),
-pass varchar(16),
-bio varchar(255),
+password varchar(16),
 email varchar(32),
 primary key (uid)
 );
@@ -38,10 +39,11 @@ foreign key (uid) references users(uid) on delete cascade
 );
 
 create table admins(
-uid int);
+	uid int
+);
 
-insert into users(username, pass, bio, email) values ('Ryan', 'test', 'test', 'ryan@email.com');
-insert into users(username, pass, bio, email) values ('Bob', 'test', 'test', 'bob@email.com');
-insert into users(username, pass, bio, email) values ('John', 'test', 'test', 'john@email.com');
+insert into users values ('Ryan', 'Test', 'admin1', '12345', 'ryan@email.com');
+insert into users values ('Alpaca', 'Paca', 'RJ', '041220', 'rj@hotmail.com');
+insert into users values ('Nat', 'ttt', 'admin0', '000', 'nat@nat.com');
 
 insert into posts(numComment, title, body, uid, img) values (0, 'My first post', 'This is my very first post',1,"leaf2.jpg");
