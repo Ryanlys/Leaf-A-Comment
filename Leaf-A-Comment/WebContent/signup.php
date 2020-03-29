@@ -6,13 +6,15 @@
 
     session_start();
     
+    $_SESSION["loggedIn"] = false;
+    
     $mysqli = new mysqli("localhost", "root","", "test");
     
     if($mysqli -> connect_errno){
-        echo "error";
+        //echo "error \n";
         exit();
     } else{
-        echo "Connected! \n";
+        //echo "Connected! \n";
     }
     
     $firstname = $_REQUEST["firstname"];
@@ -21,33 +23,25 @@
     $email = $_REQUEST["email"];
     $password = $_REQUEST["password"];
     
-    $exist=false;
+    $header = "Location: login.html";
     
-    $sql = "SELECT username FROM users";
-    
-    if($result = $mysqli -> query($sql)){
-        while($fieldinfo = $result -> fetch_field()){
-            $a = $fieldinfo -> username;
-            if ($a == $username){
-                $exist=true;
-                echo "username taken, try again";
-            }
-        }
-        $result -> free_result();
-    } else
-        echo "something's wrong...";
-        
-    
-    if (!$exist && $stmt = $mysqli -> prepare("INSERT INTO users(firstname, lastname, username, email, passwoerd) VALUES (?, ?, ?, ?, ?)")){
+    if ($stmt = $mysqli -> prepare("INSERT INTO users(firstname, lastname, username, email, passwoerd) VALUES (?, ?, ?, ?, ?)")){
         
         $stmt -> bind_param("sssss",$firstname, $lastname, $username, $email, $password);
         $stmt -> execute();
         echo "We got you ".$firstname. " !";
         $stmt -> close();
-    } else
-        echo "Failed to add you :(";
+        
+        $_SESSION["loggedIn"] = true;
+        
+    } 
+    
+    if ($_SESSION["loggedIn"] == false)
+        $header = "Location: signup.html";;
     
     $mysqli -> close();
+    
+    header($header); 
 
 ?>
 

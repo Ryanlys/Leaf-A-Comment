@@ -6,40 +6,42 @@
 
     session_start();
     
+    $_SESSION["loggedIn"] = false;
+    
     $mysqli = new mysqli("localhost", "root","", "test");
     
     if($mysqli -> connect_errno){
-        echo "error";
         exit();
-    } else{
-        echo "Connected! \n";
-    }
+    } 
     
     $username = $_REQUEST["username"];
     $password = $_REQUEST["password"];
-    $admin = false;
     
     $sql = "SELECT userid, username, password FROM users";
+    $header="Location: main.html";
     
     if($result = $mysqli -> query($sql)){
         while($fieldinfo = $result -> fetch_field()){
             $a = $fieldinfo -> username;
-            $b = $fieldinfo -> table;
+            $b = $fieldinfo -> password;
             if ($a == $username && $b == password){
                 $_SESSION["loggedIn"] = true;
-                echo $a + " " + $b;
-                $c = $fieldinfo -> userid;
-                if ($c == 1)
-                    $admin = true;
+                $_SESSION["uid"] = $fieldinfo -> userid;
+                if ($_SESSION == 1 || $_SESSION == 3)
+                    $_SESSION["admin"] = true;
             }
         }
         $result -> free_result();   
-    } else{
-        echo "Please signup!";
     }
     
-    $sql -> close();
+    if ($_SESSION["loggedIn"] == false)
+        $header = "Location: signup.html";
+    
     $mysqli -> close();
+    
+    header($header);
+    exit;
+    
 
 ?>
 
