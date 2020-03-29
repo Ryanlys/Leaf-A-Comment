@@ -11,10 +11,10 @@
     $mysqli = new mysqli("localhost", "root","", "test");
     
     if($mysqli -> connect_errno){
-        echo "error";
+        //echo "error";
         exit();
     } else{
-        echo "Connected! \n";
+        //echo "Connected! \n";
     }
     
     $username = $_REQUEST["username"];
