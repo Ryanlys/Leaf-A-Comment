@@ -6,16 +6,14 @@
 
     session_start();
     
-    $id = $_SESSION["userid"];
+    $id = $_SESSION["uid"];
+    $log = $_SESSION["loggedIn"];
     
     $mysqli = new mysqli("localhost", "root","", "test");
     
     if($mysqli -> connect_errno){
-        //echo "error";
-        exit();
-    } else{
-        //echo "Connected! \n";
-    }
+        die("Connection failed: " . $mysqli->connect_error);
+    } 
     
     $username = $_REQUEST["username"];
     $email = $_REQUEST["email"];
