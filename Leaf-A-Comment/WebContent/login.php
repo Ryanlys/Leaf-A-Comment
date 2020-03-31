@@ -11,11 +11,19 @@
     $mysqli = new mysqli("localhost", "root","", "test");
     
     if($mysqli -> connect_errno){
-        exit();
+        die("Connection failed: " . $mysqli->connect_error);
     } 
     
-    $username = $_REQUEST["username"];
-    $password = $_REQUEST["password"];
+    $username = "";
+    $password= "";
+    
+    if($_SERVER["REQUEST_METHOD"]=="POST"){
+        
+        if (isset($_POST["username"]) && isset($_POST["password"])){
+            $username = $_POST["username"];
+            $password = $_POST["password"];
+        }
+    }
     
     $sql = "SELECT userid, username, password FROM users";
     $header="Location: main.html";
@@ -27,7 +35,7 @@
             if ($a == $username && $b == password){
                 $_SESSION["loggedIn"] = true;
                 $_SESSION["uid"] = $fieldinfo -> userid;
-                if ($_SESSION == 1 || $_SESSION == 3)
+                if ($_SESSION["uid"] == 1 || $_SESSION["uid"] == 3)
                     $_SESSION["admin"] = true;
             }
         }

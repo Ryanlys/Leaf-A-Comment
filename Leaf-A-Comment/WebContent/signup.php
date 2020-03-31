@@ -11,33 +11,54 @@
     $mysqli = new mysqli("localhost", "root","", "test");
     
     if($mysqli -> connect_errno){
-        //echo "error \n";
-        exit();
-    } else{
-        //echo "Connected! \n";
+        die("Connection failed: " . $mysqli->connect_error);
+    } 
+    
+    $firstname = "";
+    $lastname = "";
+    $username = "";
+    $email = "";
+    $password = "";
+    
+    if($_SERVER["REQUEST_METHOD"]=="POST"){
+        
+        if (isset($_POST["username"]) && isset($_POST["password"])){
+            
+            $firstname = $_POST["firstname"];
+            $lastname = $_POST["lastname"];
+            $email = $_POST["email"];
+            $password = $_POST["password"];
+            $username = $_POST["username"];
+   
+            echo "firstname: " .$firstname;
+            echo "lastname: " .$lastname;
+            echo "username: " .$username;
+            echo "email: " .$email;
+            echo "password: " .$password;
+            
+        } else {
+            echo "whoops...";
+        }
     }
     
-    $firstname = $_REQUEST["firstname"];
-    $lastname = $_REQUEST["lastname"];
-    $username = $_REQUEST["username"];
-    $email = $_REQUEST["email"];
-    $password = $_REQUEST["password"];
-    
     $header = "Location: login.html";
+    $registered = false;
     
-    if ($stmt = $mysqli -> prepare("INSERT INTO users(firstname, lastname, username, email, passwoerd) VALUES (?, ?, ?, ?, ?)")){
+    if ($stmt = $mysqli -> prepare("INSERT INTO users(firstname, lastname, username, email, password) VALUES (?, ?, ?, ?, ?);")){
         
         $stmt -> bind_param("sssss",$firstname, $lastname, $username, $email, $password);
         $stmt -> execute();
-        echo "We got you ".$firstname. " !";
         $stmt -> close();
+        $registered = true;
         
-        $_SESSION["loggedIn"] = true;
-        
-    } 
+    } else {
+        echo "whoops... ".mysqli_error($mysqli);
+    }
     
-    if ($_SESSION["loggedIn"] == false)
-        $header = "Location: signup.html";;
+//     if (!$registered){
+//         $header = "Location: signup.html";
+//     }
+    
     
     $mysqli -> close();
     
