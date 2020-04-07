@@ -22,19 +22,23 @@
         if (isset($_POST["username"]) && isset($_POST["password"])){
             $username = $_POST["username"];
             $password = $_POST["password"];
+            
         }
     }
     
-    $sql = "SELECT userid, username, password FROM users";
+    $sql = "SELECT uid, username, password FROM users";
+    
     $header="Location: main.html";
     
     if($result = $mysqli -> query($sql)){
-        while($fieldinfo = $result -> fetch_field()){
-            $a = $fieldinfo -> username;
-            $b = $fieldinfo -> password;
-            if ($a == $username && $b == password){
+        
+        while($fieldinfo = $result -> fetch_assoc()){
+            
+            $a = $fieldinfo["username"];
+            $b = $fieldinfo["password"];
+            if (strcasecmp($a, $username)==0 && strcasecmp($b, $password)==0){
                 $_SESSION["loggedIn"] = true;
-                $_SESSION["uid"] = $fieldinfo -> userid;
+                $_SESSION["uid"] = $fieldinfo["uid"];
                 if ($_SESSION["uid"] == 1 || $_SESSION["uid"] == 3)
                     $_SESSION["admin"] = true;
             }
@@ -44,6 +48,7 @@
     
     if ($_SESSION["loggedIn"] == false)
         $header = "Location: signup.html";
+        
     
     $mysqli -> close();
     
