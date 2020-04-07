@@ -1,80 +1,62 @@
-<!DOCTYPE html>
-<html>
-<body>
-
 <?php 
-
-    $header = "";
+    
+    $header = "Location: main.php";
 
     session_start();
     
     if (isset($_SESSION["loggedIn"]) && isset($_SESSION["uid"])) {
         
         $id = $_SESSION["uid"];
-        $log = $_SESSION["loggedIn"];
+    
+        $mysqli = new mysqli("localhost", "root","", "test");
         
-        if ($log){
-    
-    $mysqli = new mysqli("localhost", "root","", "test");
-    
-    if($mysqli -> connect_errno){
-        die("Connection failed: " . $mysqli->connect_error);
-    } 
-    
-    $username = $_REQUEST["username"];
-    $email = $_REQUEST["email"];
-    $oldpassword = $_REQUEST["oldpassword"];
-    $newpassword = $_REQUEST["newpassword"];
-    
-    $exist=false;
-    $verified=true;
-    
-    if ($stmt = $mysqli -> prepare("SELECT password FROM users WHERE uid = ?")){
-        $stmt -> bind_param("s",$id);
-        $stmt -> execute();
-        while ($fieldinfo = $result -> fetch_assoc()){
-            $x = $fieldinfo["password"];
-            if (!($x == $oldpassword))
-                //do something to form
-                $verified = false;
-        }
-        $stmt -> close();
-    }
-    
-        if ($username != "" && $username != null){
-       
-            if ($stmt = $mysqli -> prepare("UPDATE users SET username = ? WHERE uid = ?")){
-                $stmt -> bind_param("ss",$username, $id);
-                $stmt -> execute();
-                $stmt -> close();
-            } //else
-                //echo "didn't update username";
+        if($mysqli -> connect_errno){
+            die("Connection failed: " . $mysqli->connect_error);
         }
         
-        if ($email != "" && $email != null){
-            
-            if ($stmt = $mysqli -> prepare("UPDATE users SET email = ? WHERE uid = ?")){
-                $stmt -> bind_param("ss",$email, $id);
-                $stmt -> execute();
-                $stmt -> close();
-            } //else
-                //echo "didn't update email";
-        }
-       
-        if ($newpassword != "" && $newpassword != null){
-            
-            if ($stmt = $mysqli -> prepare("UPDATE users SET password = ? WHERE uid = ?")){
-                $stmt -> bind_param("ss",$newpassword, $id);
-                $stmt -> execute();
-                $stmt -> close();
-            } //else
-                //echo "didn't update password";
-        }
+        if($_SERVER["REQUEST_METHOD"]=="POST") {
+
+            if (isset($_POST["firstname"])) {
+                
+                if ($_POST["firstname"] != "" && $_POST["firstname"] != null) {
+               
+                    if ($stmt = $mysqli -> prepare("UPDATE users SET firstname = ? WHERE uid = ?")) {
+                        
+                        $stmt -> bind_param("ss",$_POST["firstname"], $id);
+                        $stmt -> execute();
+                        $stmt -> close();
+                    }
+                }
+            }
+        
+            if (isset($_POST["lastname"])) {
+                
+                if ($_POST["lastname"] != "" && $_POST["lastname"] != null) {
+                    
+                    if ($stmt = $mysqli -> prepare("UPDATE users SET firstname = ? WHERE uid = ?")) {
+                    
+                        $stmt -> bind_param("ss",$_POST["lastname"], $id);
+                        $stmt -> execute();
+                        $stmt -> close();
+                    }
+                }
+            }
+        
+            if (isset($_POST["password"])) {
+                
+                if ($_POST["password"] != "" && $_POST["password"] != null){
+                
+                    if ($stmt = $mysqli -> prepare("UPDATE users SET password = ? WHERE uid = ?")) {
+                        
+                        $stmt -> bind_param("ss",$_POST["password"], $id);
+                        $stmt -> execute();
+                        $stmt -> close();
+                    } 
+                }
+            }
+        } $mysqli -> close();
     
-    $mysqli -> close();
-    $header = "Location: main.html";
-    
-        } } else {
+    } else {
         $header = "Location: login.html";
     }
     
@@ -82,8 +64,3 @@
     exit;
 
 ?>
-
-</body>
-</html>
-
-

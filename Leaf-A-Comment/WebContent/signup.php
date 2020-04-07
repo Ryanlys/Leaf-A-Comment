@@ -27,12 +27,6 @@
             $email = $_POST["email"];
             $password = $_POST["password"];
             $username = $_POST["username"];
-   
-            /*echo "firstname: " .$firstname;
-            echo "lastname: " .$lastname;
-            echo "username: " .$username;
-            echo "email: " .$email;
-            echo "password: " .$password;*/
             
         }
     }
