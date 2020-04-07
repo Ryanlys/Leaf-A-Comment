@@ -6,9 +6,6 @@
 
     session_start();
     
-    $_SESSION["loggedIn"] = false;
-    $_SESSION["uid"] = false;
-    
     $mysqli = new mysqli("localhost", "root","", "test");
     
     if($mysqli -> connect_errno){
@@ -20,7 +17,8 @@
     
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         
-        if (isset($_POST["username"]) && isset($_POST["password"])){
+        if (isset($_POST["username"]) && isset($_POST["password"])) {
+            
             $username = $_POST["username"];
             $password = $_POST["password"];
             
@@ -29,7 +27,7 @@
     
     $sql = "SELECT uid, username, password FROM users";
     
-    $header="Location: main.html";
+    $header="Location: main.php";
     
     if($result = $mysqli -> query($sql)){
         
@@ -55,7 +53,7 @@
         }
     }
     
-    if ($_SESSION["loggedIn"] == false)
+    if (!isset($_SESSION["loggedIn"]))
         $header = "Location: signup.html";
         
     
