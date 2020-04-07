@@ -7,6 +7,7 @@
     session_start();
     
     $_SESSION["loggedIn"] = false;
+    $_SESSION["uid"] = false;
     
     $mysqli = new mysqli("localhost", "root","", "test");
     
@@ -38,12 +39,20 @@
             $b = $fieldinfo["password"];
             if (strcasecmp($a, $username)==0 && strcasecmp($b, $password)==0){
                 $_SESSION["loggedIn"] = true;
-                $_SESSION["uid"] = $fieldinfo["uid"];
-                if ($_SESSION["uid"] == 1 || $_SESSION["uid"] == 3)
-                    $_SESSION["admin"] = true;
             }
         }
         $result -> free_result();   
+        
+        $sql = "SELECT uid FROM  admins";
+        if($result = $mysqli -> query($sql)) {
+            
+            while($fieldinfo = $result -> fetch_assoc()) {
+                
+                $c = $fieldinfo["uid"];
+                if ($_SESSION["uid"] == $c)
+                    $_SESSION["admin"] = true;
+            }
+        }
     }
     
     if ($_SESSION["loggedIn"] == false)
