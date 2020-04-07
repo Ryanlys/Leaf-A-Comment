@@ -6,8 +6,6 @@
 
     session_start();
     
-    $_SESSION["loggedIn"] = false;
-    
     $mysqli = new mysqli("localhost", "root","", "test");
     
     if($mysqli -> connect_errno){
@@ -30,14 +28,12 @@
             $password = $_POST["password"];
             $username = $_POST["username"];
    
-            echo "firstname: " .$firstname;
+            /*echo "firstname: " .$firstname;
             echo "lastname: " .$lastname;
             echo "username: " .$username;
             echo "email: " .$email;
-            echo "password: " .$password;
+            echo "password: " .$password;*/
             
-        } else {
-            echo "whoops...";
         }
     }
     
@@ -55,10 +51,9 @@
         echo "whoops... ".mysqli_error($mysqli);
     }
     
-//     if (!$registered){
-//         $header = "Location: signup.html";
-//     }
-    
+    if (!$registered){
+        $header = "Location: signup.html";
+    } 
     
     $mysqli -> close();
     
