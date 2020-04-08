@@ -22,7 +22,9 @@
         header("Location: main.php");
         exit;
     } else {
-        echo "ERROR";
+        //echo "ERROR";
+        header("Location: main.php");
+        exit;
     }
 
 ?>
