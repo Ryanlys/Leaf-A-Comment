@@ -36,9 +36,15 @@
 		<img id="logo" alt="whoops" src="images/logo.png">
 		<nav>
 			<ul>
-				<li class="navButton"><a href="main.html"><button>Home</button></a></li>
-				<li class="navButton"><a href="manageaccount.html"><button>Account</button></a></li>
-				<li class="navButton"><a href="login.html"><button>Log In</button></a></li>
+				<li class="navButton"><a href="main.php"><button>Home</button></a></li>
+				<?php 
+					if (!(isset($_SESSION["loggedIn"]))) {
+	    				echo "<li class='navButton'><a href='login.html'><button>Log In</button></a></li>";
+					} else {
+					    echo "<li class='navButton'><a href='manageaccount.html'><button>Account</button></a></li>";
+					    echo "<li class='navButton'><a href='logout.php'><button>Log Out</button></a></li>";
+					}
+				?>
 			</ul>	
 		</nav>
 	</header>
@@ -61,39 +67,29 @@
 				$date = $getData["postDate"];
 				$username = $getData["username"];
 
-				/*
-				echo "\n<article class='post'>\n<img class='thumbnail' src='images/$img'>\n<div class='content'>\n<h1>$title</h1>";
-				echo "<p class='desc'>$desc</p>\n</div>\n<p class='things'>\n<time datetime='$date'>$date</time><br>";
-				echo "<a href='viewpost.php?pid=$pid' class='commentButton'><button> View</button></a>\n</p>\n</article>\n";*/
+				
+				echo "\n<article class='post'>\n<img class='thumbnail' src='".$img."'>\n<div class='content'>\n<h1>".$title."</h1>";
+				echo "<p class='desc'>".$desc."</p>\n</div>\n<p class='things'>\n<time datetime='".$date."'>".$date."</time><br>";
+				echo "<a href='viewpost.php?pid=".$pid."' class='commentButton'><button> View</button></a>\n</p>\n</article>\n";
 			}
 			mysqli_close($conn); 
 
 		?>
-		
-		<article class='post'>
-			<img class='thumbnail' src='images/leaf2.jpg'>
-			<div class='content'>
-				<h1>
-					test
-				</h1>
-				<p class='desc'>
-					test
-				</p>
-			</div>
-			<p class='things'>
-				<time datetime='2017-11-11'>2017-11-11</time><br>
-				<a href='viewpost.php?pid=3' class='commentButton'><button> View</button></a>
-			</p>
-		</article>
 
 	</main>
 	
 	<footer>
 		<nav>
 			<ul>
-				<li class="navButton"><a href="main.html">Home</a></li>
-				<li class="navButton"><a href="account.html">Account</a></li>
-				<li class="navButton"><a href="login.html">Log In</a></li>
+				<li class="navButton"><a href="main.php"><button>Home</button></a></li>
+				<?php 
+					if (!(isset($_SESSION["loggedIn"]))) {
+	    				echo "<li class='navButton'><a href='login.html'><button>Log In</button></a></li>";
+					} else {
+					    echo "<li class='navButton'><a href='manageaccount.html'><button>Account</button></a></li>";
+					    echo "<li class='navButton'><a href='logout.php'><button>Log Out</button></a></li>";
+					}
+				?>
 			</ul>
 		</nav>
 		<p>2020 &copy; Leaf A Comment</p>

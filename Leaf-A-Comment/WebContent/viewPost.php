@@ -1,8 +1,10 @@
 <?php
 	session_start();
-	$uid = 1; //to change to session var
-	$admin = false; //to change to session var
-	$loggedIn = true;
+	if (isset($_SESSION["uid"]) && isset($_SESSION["admin"])) {
+    	$uid = $_SESSION["uid"];
+    	$admin = $_SESSION["admin"];
+	}
+	
 	$servername = "localhost";
 	$dbUsername = "root";
 	$password = "";
@@ -48,9 +50,15 @@
 			<input type="text" name="search" placeholder="type in keyword"><button type="submit">search</button>
 			</form>
 			<ul>
-				<li class="navButton"><a href="main.html"><button>Home</button></a></li>
-				<li class="navButton"><a href="manageaccount.html"><button>Account</button></a></li>
-				<li class="navButton"><a href= <?php if($_SESSION["loggedIn"]) {echo "\"logout.php\" ><button> Log Out </button>";} else {echo "\"login.html\" ><button>Log In</button>";} ?> </a></li>
+				<li class="navButton"><a href="main.php"><button>Home</button></a></li>
+				<?php 
+					if (!(isset($_SESSION["loggedIn"]))) {
+	    				echo "<li class='navButton'><a href='login.html'><button>Log In</button></a></li>";
+					} else {
+					    echo "<li class='navButton'><a href='manageaccount.html'><button>Account</button></a></li>";
+					    echo "<li class='navButton'><a href='logout.php'><button>Log Out</button></a></li>";
+					}
+				?>				
 			</ul>
 		</nav>
 	</header>
@@ -131,9 +139,15 @@
 	<footer>
 		<nav>
 			<ul>
-				<li class="navButton"><a href="main.html"><button>Home</button></a></li>
-				<li class="navButton"><a href="account.html"><button>Account</button></a></li>
-				<li class="navButton"><a href= <?php if($_SESSION["loggedIn"]) {echo "\"logout.php\" ><button> Log Out </button>";} else {echo "\"login.html\" ><button>Log In</button>";} ?> </a></li>
+				<li class="navButton"><a href="main.php"><button>Home</button></a></li>
+				<?php 
+					if (!(isset($_SESSION["loggedIn"]))) {
+	    				echo "<li class='navButton'><a href='login.html'><button>Log In</button></a></li>";
+					} else {
+					    echo "<li class='navButton'><a href='manageaccount.html'><button>Account</button></a></li>";
+					    echo "<li class='navButton'><a href='logout.php'><button>Log Out</button></a></li>";
+					}
+				?>
 			</ul>
 		</nav>
 		<p>2020 &copy; Leaf A Comment</p>

@@ -15,17 +15,25 @@
 			<input type="text" name="search" placeholder="type in keyword"><button type="submit">search</button>
 			</form>
 			<ul>
-				<li class="navButton"><a href="main.html"><button>Home</button></a></li>
-				<li class="navButton"><a href="manageaccount.html"><button>Account</button></a></li>
-				<li class="navButton"><a href="login.html"><button>Log In</button></a></li>
+				<li class="navButton"><a href="main.php"><button>Home</button></a></li>
+				<?php 
+					if (!(isset($_SESSION["loggedIn"]))) {
+	    				echo "<li class='navButton'><a href='login.html'><button>Log In</button></a></li>";
+					} else {
+					    echo "<li class='navButton'><a href='manageaccount.html'><button>Account</button></a></li>";
+					    echo "<li class='navButton'><a href='logout.php'><button>Log Out</button></a></li>";
+					}
+				?>
 			</ul>
 			
 			
 		</nav>
 	</header>
 	<main>
-		<p><a href="newPost.html" id=newPostButton><button>New Post</button></a></p><br>
 		<?php 
+		  if (!(isset($_SESSION["loggedIn"]))) {
+	    	echo "<p><a href='newPost.html' id=newPostButton><button>New Post</button></a></p><br>";
+		  }
 		
 		$mysqli = new mysqli("localhost", "root","", "test");
 		
@@ -56,9 +64,15 @@
 	<footer>
 		<nav>
 			<ul>
-				<li class="navButton"><a href="main.html">Home</a></li>
-				<li class="navButton"><a href="account.html">Account</a></li>
-				<li class="navButton"><a href="login.html">Log In</a></li>
+				<li class="navButton"><a href="main.php"><button>Home</button></a></li>
+				<?php 
+					if (!(isset($_SESSION["loggedIn"]))) {
+	    				echo "<li class='navButton'><a href='login.html'><button>Log In</button></a></li>";
+					} else {
+					    echo "<li class='navButton'><a href='manageaccount.html'><button>Account</button></a></li>";
+					    echo "<li class='navButton'><a href='logout.php'><button>Log Out</button></a></li>";
+					}
+				?>
 			</ul>
 		</nav>
 		<p>2020 &copy; Leaf A Comment</p>
