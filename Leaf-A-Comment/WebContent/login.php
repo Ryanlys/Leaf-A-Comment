@@ -35,8 +35,10 @@
             
             $a = $fieldinfo["username"];
             $b = $fieldinfo["password"];
+            $c = $fieldinfo["uid"];
             if (strcasecmp($a, $username)==0 && strcasecmp($b, $password)==0){
                 $_SESSION["loggedIn"] = true;
+                $_SESSION["uid"] = $c;
             }
         }
         $result -> free_result();   
