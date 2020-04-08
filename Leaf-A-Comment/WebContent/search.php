@@ -29,7 +29,7 @@
 <title>Leaf A Comment</title>
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/forall.css">
-<link rel="stylesheet" href="css/search.css">
+<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 	<header id="top">
@@ -50,11 +50,14 @@
 	</header>
 	
 	<main>
-		<p><a href="newPost.html" id=newPostButton><button>New Post</button></a>
-		<form id="search" method="get" action="search.php">
-			<input id="searchBar" type="text" name="search" placeholder="type in keyword"><button type="submit">Search</button>
+		<p>
+		<form id="anotherSearch" method="get" action="search.php">
+			<button type="submit">Search</button><input id="searchBar" type="text" name="search" placeholder="type in keyword">
 		</form>
 		</p>
+		</br>	
+		<a href="newPost.html" id=newPostButton><button>New Post</button></a>
+		
 		<br>
 
 		<?php
@@ -66,7 +69,6 @@
 				$img = $getData["img"];
 				$date = $getData["postDate"];
 				$username = $getData["username"];
-
 				
 				echo "\n<article class='post'>\n<img class='thumbnail' src='images\\userimg\\".$img."'>\n<div class='content'>\n<h1>".$title."</h1>";
 				echo "<p class='desc'>".$desc."</p>\n</div>\n<p class='things'>\n<time datetime='".$date."'>".$date."</time><br>";

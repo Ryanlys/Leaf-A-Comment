@@ -43,15 +43,15 @@
         }
         $result -> free_result();   
         
-        $sql = "SELECT uid FROM  admins";
+        $sql = "SELECT * FROM  admins";
         if($result = $mysqli -> query($sql)) {
             
             while($fieldinfo = $result -> fetch_assoc()) {
-                
-                $c = $fieldinfo["uid"];
-                if ($_SESSION["uid"] == $c)
+                $d = $fieldinfo["uid"];
+                if ($_SESSION["uid"] == $d){
                     $_SESSION["admin"] = true;
-            }
+                }
+            } $result -> free_result();
         }
     }
     

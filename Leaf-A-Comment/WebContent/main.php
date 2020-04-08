@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +25,9 @@
 					} else {
 					    echo "<li class='navButton'><a href='manageaccount.html'><button>Account</button></a></li>";
 					    echo "<li class='navButton'><a href='logout.php'><button>Log Out</button></a></li>";
+					    if (isset($_SESSION["admin"])){
+					        echo "<li class='navButton'><a href='adminIndex.php'><button>Admin</button></a></li>";
+					    }
 					}
 				?>
 			</ul>
@@ -51,10 +57,11 @@
 		        $b = $fieldinfo["title"];
 		        $c = $fieldinfo["body"];
 		        $d = $fieldinfo["img"];
+		        $pid = $fieldinfo["pid"];
 		        
-		        echo "<article class='post'><img class='thumbnail' src='".$d."'>";
+		        echo "<article class='post'><img class='thumbnail' src='images\\userimg\\".$d."'>";
                 echo "<div class='content'><h1>".$b."</h1><p class='desc'>".$c."</p></div>";
-			    echo "<p class='things'><time datetime='".$a."'>".$a."</time><br><a href='main.html' class='commentButton'><button>Comment</button></a></p></article>";
+			    echo "<p class='things'><time datetime='".$a."'>".$a."</time><br><a href='viewPost.php?pid=".$pid."' class='commentButton'><button>Comment</button></a></p></article>";
 		
 		    }
 		}
