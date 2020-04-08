@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/forall.css">
 <link rel="stylesheet" href="css/login.css">
-<title>login page</title>
+<title>Email Reset</title>
 </head>
 <body>
 	<header id="top">
@@ -18,7 +18,7 @@
 		
 		<nav>
 			<ul>
-				<li class="navButton"><a href="main.html"><button>Home</button></a></li>
+				<li class="navButton"><a href="main.php"><button>Home</button></a></li>
 			</ul>
 		</nav>
 		
@@ -26,33 +26,21 @@
 
 	<main>
 		
-		<h1>Hi, do you have an account?</h1>
-		<form id="login" method="post" action="login.php">
+		<h1>Hi, can we get your email?</h1>
+		<form id="resetEmail" method="post" action="sendmail.php">
 		
 			<fieldset>
 			
-				<p id="username">
-					<label>Username:</label>
-					<input type="text" name="username" required>
+				<p id="email">
+					<label>Email:</label>
+					<input type="email" name="email" required>
 				</p>
 				
-				<p id="password">
-					<label>Password:</label>
-					<input type="password" name="password" required>
-				</p>
-				<button type="submit">Login</button>
+				<button type="submit">Reset</button>
 			
 			</fieldset>
 		
 		</form>
-		
-		<div id="help">
-			<p>Did you forget your password? 
-			<span><a href="getEmail.php">Click here to reset</a></span></p>
-			<p>First time here?
-			<span><a href="signup.html">Click here to signup!</a></span></p>
-		</div>
-			
 	
 	</main>
 	
