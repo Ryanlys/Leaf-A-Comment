@@ -90,7 +90,13 @@
 			<p class="things">
 				<time datetime=<?php echo "'$date'>$date"?></time><br>
 				<?php 
-					echo "<a href=\"\">$username</a><br>";
+				
+				if (isset($_SESSION["admin"])){
+				    echo "<a href='adminIndex.php?usersearch=".$username."'>".$username."</a><br>";
+				} else {
+				    echo "<a href=\"\">$username</a><br>";
+				}
+				
 				?>
 			</p>
 		</article>

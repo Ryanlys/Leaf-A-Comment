@@ -1,5 +1,10 @@
 <?php
 	session_start();
+	
+	if (!isset($_SESSION["admin"])){
+	   header("Location: main.html");
+	   exit;
+	}
 
 	$servername = "localhost";
 	$dbUsername = "root";
@@ -63,7 +68,9 @@
 				$uid = $getData["uid"];
 				echo "<p>";
 				echo "<a href='deleteUser.php?uid=".$uid."'>Remove</a>";
-				echo $username."</p>";
+				echo " ";
+				echo "<a href='makeAdmin.php?uid=".$uid."'>Make Admin</a>";
+				echo " ".$username."</p>";
 			}
 			mysqli_close($conn); 
 
