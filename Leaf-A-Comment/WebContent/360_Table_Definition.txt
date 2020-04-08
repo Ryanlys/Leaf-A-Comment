@@ -1,6 +1,7 @@
 drop table if exists comments ;
 drop table if exists posts ;
 drop table if exists users ;
+drop table if exists admins;
 
 create table users (
 uid int auto_increment,
