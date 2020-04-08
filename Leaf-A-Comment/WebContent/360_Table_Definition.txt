@@ -45,5 +45,5 @@ create table admins(
 insert into users(firstname, lastname, username, password, email) values ('Ryan', 'Test', 'admin0', '12345', 'ryan@email.com');
 insert into users(firstname, lastname, username, password, email) values ('Nat', 'Nat', 'notadmin0', '00000', 'nat@nat.com');
 
-insert into posts(numComment, title, body, uid, img) values (0, 'My first post', 'This is my very first post',1,"leaf2.jpg");
+insert into posts(numComment, title, body, uid, img) values (0, 'My first post', 'This is my very first post',1,"images/leaf2.jpg");
 insert into posts(numComment, title, body, uid, img) values (0, 'Saw some Barberries Today', 'They are shrubs that can range from compact, 3-feet tall plants to 8 feet or more; whichever variety you choose, they add a pop to your garden. Pair them with lime-green plants for an especially eye-catching display. These shrubs do have thorns, so be careful when planting in a yard where children will play.',1,"images/barberries.jpg");

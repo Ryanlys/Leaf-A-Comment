@@ -29,7 +29,8 @@
 	if($stmt = mysqli_prepare($conn,$sql))
 	{
 		$numCom = 0;
-		mysqli_stmt_bind_param($stmt,'iisbs',$uid,$numCom,$title,$desc,$_FILES["pic"]["name"]);
+		$imgname = "images/userimg/".$_FILES["pic"]["name"];
+		mysqli_stmt_bind_param($stmt,'iisbs',$uid,$numCom,$title,$desc,$imgname);
 		mysqli_stmt_execute($stmt);
 
 		$sql = "select last_insert_id()";
