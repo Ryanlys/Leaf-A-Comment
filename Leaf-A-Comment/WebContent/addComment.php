@@ -3,7 +3,9 @@
 
 	include "loggedin.php";
 	
-	$uid = 1;
+	if (isset($_SESSION["uid"])){
+	   $uid = $_SESSION["uid"];
+	}
 	$servername = "localhost";
 	$dbUsername = "root";
 	$password = "";
