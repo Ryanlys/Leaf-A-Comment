@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+    include "loggedin.php";
+
 	$servername = "localhost";
 	$dbUsername = "root";
 	$password = "";
@@ -13,5 +15,5 @@ session_start();
 	mysqli_stmt_bind_param($stmt,"i",$pid);
 	mysqli_stmt_execute($stmt);
 
-	header("Location: main.html");
+	header("Location: main.php");
 ?>

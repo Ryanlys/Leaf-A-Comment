@@ -1,13 +1,15 @@
 drop table if exists comments ;
 drop table if exists posts ;
 drop table if exists users ;
+drop table if exists admins;
 
 create table users (
 uid int auto_increment,
-username varchar(16),
-pass varchar(16),
-bio varchar(255),
-email varchar(32),
+firstname varchar(100),
+lastname varchar(100),
+username varchar(100),
+password varchar(16),
+email varchar(100),
 primary key (uid)
 );
 
@@ -38,10 +40,11 @@ foreign key (uid) references users(uid) on delete cascade
 );
 
 create table admins(
-uid int);
+	uid int
+);
 
-insert into users(username, pass, bio, email) values ('Ryan', 'test', 'test', 'ryan@email.com');
-insert into users(username, pass, bio, email) values ('Bob', 'test', 'test', 'bob@email.com');
-insert into users(username, pass, bio, email) values ('John', 'test', 'test', 'john@email.com');
+insert into users(firstname, lastname, username, password, email) values ('Ryan', 'Test', 'admin0', '12345', 'ryan@email.com');
+insert into users(firstname, lastname, username, password, email) values ('Nat', 'Nat', 'notadmin0', '00000', 'nat@nat.com');
 
 insert into posts(numComment, title, body, uid, img) values (0, 'My first post', 'This is my very first post',1,"leaf2.jpg");
+insert into posts(numComment, title, body, uid, img) values (0, 'Saw some Barberries Today', 'They are shrubs that can range from compact, 3-feet tall plants to 8 feet or more; whichever variety you choose, they add a pop to your garden. Pair them with lime-green plants for an especially eye-catching display. These shrubs do have thorns, so be careful when planting in a yard where children will play.',1,"barberries.jpg");
