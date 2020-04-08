@@ -4,7 +4,9 @@
 
     session_start();
     
-    if (isset($_SESSION["loggedIn"]) && isset($_SESSION["uid"])) {
+    include "loggedin.php";
+    
+    if (isset($_SESSION["uid"])) {
         
         $id = $_SESSION["uid"];
     

@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+    include "loggedin.php";
+
 	$servername = "localhost";
 	$dbUsername = "root";
 	$password = "";

@@ -1,5 +1,7 @@
 <?php
 	session_start();
+	
+	include "loggedin.php";
 
 	$uid = 1; //to be removed
 	$title = $_REQUEST["title"];

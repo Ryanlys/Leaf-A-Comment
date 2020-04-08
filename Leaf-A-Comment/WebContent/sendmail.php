@@ -16,13 +16,13 @@
     }
     
     $subject = "Leaf A Comment: Password Recovery";
-    $headers = "From: <leafacomment@gmail.com>";
+    $headers = "From: Admin <leafacomment@gmail.com>";
     
     if (mail($to,$subject,$txt,$headers)) {
         header("Location: main.php");
         exit;
     } else {
-        echo error_get_last();
+        echo "ERROR";
     }
 
 ?>
