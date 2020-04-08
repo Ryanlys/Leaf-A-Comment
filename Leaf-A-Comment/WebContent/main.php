@@ -51,10 +51,11 @@
 		        $b = $fieldinfo["title"];
 		        $c = $fieldinfo["body"];
 		        $d = $fieldinfo["img"];
+		        $pid = $fieldinfo["pid"];
 		        
-		        echo "<article class='post'><img class='thumbnail' src='".$d."'>";
+		        echo "<article class='post'><img class='thumbnail' src='images\\userimg\\".$d."'>";
                 echo "<div class='content'><h1>".$b."</h1><p class='desc'>".$c."</p></div>";
-			    echo "<p class='things'><time datetime='".$a."'>".$a."</time><br><a href='main.html' class='commentButton'><button>Comment</button></a></p></article>";
+			    echo "<p class='things'><time datetime='".$a."'>".$a."</time><br><a href='viewPost.php?pid=".$pid."' class='commentButton'><button>Comment</button></a></p></article>";
 		
 		    }
 		}

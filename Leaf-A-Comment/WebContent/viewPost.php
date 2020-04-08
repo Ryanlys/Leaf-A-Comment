@@ -63,8 +63,12 @@
 		</nav>
 	</header>
 	<main>
-		<p><a href="newPost.html" id=newPostButton><button>New Post</button></a></p><br>
-		<article class="post">
+    	<?php 
+    	   if (!(isset($_SESSION["loggedIn"]))) {
+    	       echo "<p><a href='newPost.html' id=newPostButton><button>New Post</button></a></p><br>";
+    	   }
+    	?>
+    	<article class="post">
 			<?php 
 				if($img != null)
 				{
@@ -91,7 +95,7 @@
 			</p>
 		</article>
 		<?php
-			if($loggedIn && ($uid == $postOwner || $admin == true))
+			if(isset($_SESSION["loggedIn"]) && ($uid == $postOwner || $admin == true))
 			{
 				echo "<section><button id='mainReply'> Reply </button> <a href='editPost.php?pid=$pid'><button id='editPost'> Edit </button></a></section>";
 			}
