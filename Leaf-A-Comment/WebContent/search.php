@@ -69,7 +69,6 @@
 				$img = $getData["img"];
 				$date = $getData["postDate"];
 				$username = $getData["username"];
-
 				
 				echo "\n<article class='post'>\n<img class='thumbnail' src='images\\userimg\\".$img."'>\n<div class='content'>\n<h1>".$title."</h1>";
 				echo "<p class='desc'>".$desc."</p>\n</div>\n<p class='things'>\n<time datetime='".$date."'>".$date."</time><br>";

@@ -1,5 +1,10 @@
 <?php
 	session_start();
+	
+	if (!isset($_SESSION["admin"])){
+	   header("Location: main.html");
+	   exit;
+	}
 
 	$servername = "localhost";
 	$dbUsername = "root";
@@ -63,7 +68,24 @@
 				$uid = $getData["uid"];
 				echo "<p>";
 				echo "<a href='deleteUser.php?uid=".$uid."'>Remove</a>";
-				echo $username."</p>";
+				echo " ".$username;
+				
+				$admintrue = False;
+				$sql2 = "SELECT * FROM  admins";
+				
+				if($result2 = $conn -> query($sql2)) {
+				    while($fieldinfo = $result2 -> fetch_assoc()) {
+				        $d = $fieldinfo["uid"];
+				        if ($uid == $d){
+				            $admintrue = True;
+				        }
+				    } $result2 -> free_result();
+				} if ($admintrue == False){
+				    echo " <a href='makeAdmin.php?uid=".$uid."'>Grant Admin Privileges</a></p>";
+				} else {
+				    echo " <a href='unmakeAdmin.php?uid=".$uid."'>Revoke Admin Privileges</a></p>";
+				}
+				
 			}
 			mysqli_close($conn); 
 
