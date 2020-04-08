@@ -17,13 +17,11 @@
             $stmt -> bind_param("i",$_GET["uid"]);
             $stmt -> execute();
             $stmt -> close();
-            
-            header("Location: adminIndex.php");
-            exit;
+        
         }
-    } else {
-        echo "hi";
     }
     
+    header("Location: adminIndex.php");
+    exit;
 	
 ?>
