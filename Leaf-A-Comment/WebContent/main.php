@@ -20,14 +20,14 @@
 			<ul>
 				<li class="navButton"><a href="main.php"><button>Home</button></a></li>
 				<?php 
-					if (!(isset($_SESSION["loggedIn"]))) {
-	    				echo "<li class='navButton'><a href='login.html'><button>Log In</button></a></li>";
-					} else {
+					if (isset($_SESSION["loggedIn"])) {
 					    echo "<li class='navButton'><a href='manageaccount.html'><button>Account</button></a></li>";
 					    echo "<li class='navButton'><a href='logout.php'><button>Log Out</button></a></li>";
 					    if (isset($_SESSION["admin"])){
 					        echo "<li class='navButton'><a href='adminIndex.php'><button>Admin</button></a></li>";
 					    }
+					} else {
+					    echo "<li class='navButton'><a href='login.html'><button>Log In</button></a></li>";
 					}
 				?>
 			</ul>
@@ -37,7 +37,7 @@
 	</header>
 	<main>
 		<?php 
-		  if (!(isset($_SESSION["loggedIn"]))) {
+		  if (isset($_SESSION["loggedIn"])) {
 	    	echo "<p><a href='newPost.html' id=newPostButton><button>New Post</button></a></p><br>";
 		  }
 		
@@ -58,10 +58,19 @@
 		        $c = $fieldinfo["body"];
 		        $d = $fieldinfo["img"];
 		        $pid = $fieldinfo["pid"];
+		        $date = substr($a, 0,10);
 		        
-		        echo "<article class='post'><img class='thumbnail' src='images\\userimg\\".$d."'>";
-                echo "<div class='content'><h1>".$b."</h1><p class='desc'>".$c."</p></div>";
-			    echo "<p class='things'><time datetime='".$a."'>".$a."</time><br><a href='viewPost.php?pid=".$pid."' class='commentButton'><button>Comment</button></a></p></article>";
+		        echo "<article class='post'>";
+		          echo "<img class='thumbnail' src='images\\userimg\\".$d."'>";
+                  echo "<div class='content'>";
+                    echo "<h1>".$b."</h1>";
+                    echo "<p class='desc'>".$c."</p>";
+                  echo "</div>";
+			      echo "<p class='things'>";
+			         echo "<time datetime='".$a."'>".$date."</time><br>";
+                     echo "<a href='viewPost.php?pid=".$pid."' class='commentButton'><button>Comment</button></a>";
+                  echo "</p>";
+                echo "</article>";
 		
 		    }
 		}
@@ -71,13 +80,13 @@
 	<footer>
 		<nav>
 			<ul>
-				<li class="navButton"><a href="main.php"><button>Home</button></a></li>
+				<li class="navButton"><a href="main.php">Home</a></li>
 				<?php 
 					if (!(isset($_SESSION["loggedIn"]))) {
-	    				echo "<li class='navButton'><a href='login.html'><button>Log In</button></a></li>";
+	    				echo "<li class='navButton'><a href='login.html'>Log In</a></li>";
 					} else {
-					    echo "<li class='navButton'><a href='manageaccount.html'><button>Account</button></a></li>";
-					    echo "<li class='navButton'><a href='logout.php'><button>Log Out</button></a></li>";
+					    echo "<li class='navButton'><a href='manageaccount.html'>Account</a></li>";
+					    echo "<li class='navButton'><a href='logout.php'>Log Out</a></li>";
 					}
 				?>
 			</ul>

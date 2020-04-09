@@ -22,7 +22,8 @@
 	$title = $getData["title"];
 	$desc = $getData["body"];
 	$img = $getData["img"];
-	$date = $getData["postDate"];
+	$datetime = $getData["postDate"];
+	$date = substr($datetime, 0,10);
 	$username = $getData["username"];
 	$postOwner = $getData["uid"];
 
@@ -64,7 +65,7 @@
 	</header>
 	<main>
     	<?php 
-    	   if (!(isset($_SESSION["loggedIn"]))) {
+    	   if (isset($_SESSION["loggedIn"])) {
     	       echo "<p><a href='newPost.html' id=newPostButton><button>New Post</button></a></p><br>";
     	   }
     	?>
@@ -88,7 +89,7 @@
 				</p>
 			</div>
 			<p class="things">
-				<time datetime=<?php echo "'$date'>$date"?></time><br>
+				<time datetime=<?php echo "'$datetime'>$date"?></time><br>
 				<?php 
 				
 				if (isset($_SESSION["admin"])){
@@ -104,10 +105,6 @@
 			if(isset($_SESSION["loggedIn"]) && ($uid == $postOwner || $admin == true))
 			{
 				echo "<section><button id='mainReply'> Reply </button> <a href='editPost.php?pid=$pid'><button id='editPost'> Edit </button></a></section>";
-			}
-			else
-			{
-				echo "<section><button id='mainReply'> Reply </button></section>";
 			}
 		?>	
 		<section class="comments">

@@ -19,6 +19,7 @@
 		} else{
 			return true;
 		}
+	}
 
 </script>
 
@@ -35,7 +36,8 @@
 		
 		<nav>
 			<ul>
-				<li class="navButton"><a href="main.html"><button>Home</button></a></li>
+				<li class="navButton"><a href="main.php"><button>Home</button></a></li>
+				<li class="navButton"><a href="login.html"><button>Login</button></a></li>
 			</ul>
 		</nav>
 		
@@ -51,27 +53,27 @@
 			
 				<p id="firstname">
 					<label>first name:</label>
-					<input type="text" name="firstname" required>
+					<input type="text" name="firstname" placeholder="enter your first name" required>
 				</p>
 				
 				<p id="lastname">
 					<label>last name:</label>
-					<input type="text" name="lastname" required>
+					<input type="text" name="lastname" placeholder="enter your last name" required>
 				</p>
 				
 				<p id="username">
 					<label>username:</label>
-					<input type="text" name="username" required>
+					<input type="text" name="username" placeholder="your public handle" required>
 				</p>
 				
 				<p id="email">
 					<label>email:</label>
-					<input type="email" name="email" required>
+					<input type="email" name="email" placeholder="ex.bts@bighit.com" required>
 				</p>
 				
 				<p id="password">
 					<label>password:</label>
-					<input type="password" name="password" required>
+					<input type="password" name="password" pattern = "([A-z0-9]){7,14}" placeholder="enter 7-14 characters" required>
 				</p>
 				
 				<p id="repassword">
@@ -89,6 +91,12 @@
 	</main>
 	
 	<footer>
+		<nav>
+			<ul>
+				<li class="navButton"><a href="main.php">Home</a></li>
+				<li class="navButton"><a href="login.html">Login</a></li>
+			</ul>
+		</nav>
 		<p>2020 &copy; Leaf A Comment</p>
 		<a href="#top">back to top</a></span></p>
 	</footer>
