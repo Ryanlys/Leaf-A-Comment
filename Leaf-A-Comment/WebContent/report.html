@@ -1,1 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script>
 
+	window.onload = function() {
+		
+		var data;
+		var dates = [0];
+		var clickss = [0];
+	
+	var ajax = new XMLHttpRequest();
+	ajax.open("GET", "report.php",true)
+	ajax.send();
+	
+	ajax.onreadystatechange = function(){
+		if(this.readyState == 4 && this.status == 200){
+			//console.log(this.responseText);
+			data = JSON.parse(this.responseText);
+			//console.log(data);
+			var html = "";
+			for (var a=0; a < data.length; a++){
+				var date = data[a].date;
+				dates.push(date);
+				var clicks = data[a].clicks;
+				clickss.push(clicks);
+				html += "<tr>";
+					html += "<td>" + date + "</td>";
+					html += "<td>" + clicks + "</td>";
+				html += "</tr>";
+			} document.getElementById("data").innerHTML += html;
+			
+			myChart = document.getElementById('chart');
+			Plotly.newPlot( myChart, [{
+			x: dates,
+			y: clicks }], {
+			margin: { t: 0 } } );
+		}
+	};
+};
+</script>
+<script src="js/plotly-latest.min.js"></script>
+<title>Usage Report</title>
+</head>
+<body>
+<table>
+	<tr>
+		<th>Date</th>
+		<th>Clicks</th>
+	</tr>
+	<tbody id="data"></tbody>
+</table>
+<div id="chart" style="width:600px;height:250px;"></div>
+<script>
+	
+</script>
+</body>
+</html>
