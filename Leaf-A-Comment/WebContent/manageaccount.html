@@ -43,7 +43,7 @@
 	</header>
 	
 	<main>
-		<h1>hello there</h1>
+		<h1>anything you'd like to change?</h1>
 		
 		<form name="manage" method="post" action="manageaccount.php" onSubmit="return validateForm()">
 		<fieldset>
@@ -60,7 +60,7 @@
 		
 		<p id="newpassword">
 			<label>new password:</label>
-			<input type="password" name="newpassword">
+			<input type="password" name="newpassword" pattern = "([A-z0-9]){7,14}">
 		</p>
 		
 		<p id="repassword">
@@ -75,6 +75,12 @@
 		</form>
 	</main>
 	<footer>
+		<nav>
+			<ul>
+				<li class="navButton"><a href="main.php">Home</a></li>
+				<li class="navButton"><a href="logout.php">Logout</a></li>
+			</ul>
+		</nav>
 		<p>2020 &copy; Leaf A Comment</p>
 		<a href="#top">back to top</a></span></p>
 	</footer>

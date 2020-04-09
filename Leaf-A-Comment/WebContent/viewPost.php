@@ -155,13 +155,14 @@
 	<footer>
 		<nav>
 			<ul>
-				<li class="navButton"><a href="main.php"><button>Home</button></a></li>
+				<li class="navButton"><a href="main.php">Home</a></li>
 				<?php 
 					if (!(isset($_SESSION["loggedIn"]))) {
-	    				echo "<li class='navButton'><a href='login.html'><button>Log In</button></a></li>";
+	    				echo "<li class='navButton'><a href='login.html'>Log In</a></li>";
 					} else {
-					    echo "<li class='navButton'><a href='manageaccount.html'><button>Account</button></a></li>";
-					    echo "<li class='navButton'><a href='logout.php'><button>Log Out</button></a></li>";
+					    echo "<li class='navButton'><a href='manageaccount.html'>Account</a></li>";
+					    echo " ";
+					    echo "<li class='navButton'><a href='logout.php'>Log Out</a></li>";
 					}
 				?>
 			</ul>
