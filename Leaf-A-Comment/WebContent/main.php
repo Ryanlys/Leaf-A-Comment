@@ -32,7 +32,6 @@
 					    {
 					        echo "<li class='navButton'><a href='adminIndex.php'><button>Admin</button></a></li>";
 					    }
-					}
 				?>
 			</ul>
 			
@@ -65,10 +64,18 @@
 		        $c = $fieldinfo["body"];
 		        $d = $fieldinfo["img"];
 		        $pid = $fieldinfo["pid"];
-		        
-		        echo "<article class='post'><img class='thumbnail' src='images\\userimg\\".$d."'>";
-                echo "<div class='content'><h1>".$b."</h1><p class='desc'>".$c."</p></div>";
-			    echo "<p class='things'><time datetime='".$a."'>".$a."</time><br><a href='viewPost.php?pid=".$pid."' class='commentButton'><button>View</button></a></p></article>";
+		        $date = substr($a, 0,10);
+		        echo "<article class='post'>";
+		          echo "<img class='thumbnail' src='images\\userimg\\".$d."'>";
+                  echo "<div class='content'>";
+                    echo "<h1>".$b."</h1>";
+                    echo "<p class='desc'>".$c."</p>";
+                  echo "</div>";
+			      echo "<p class='things'>";
+			         echo "<time datetime='".$a."'>".$date."</time><br>";
+                     echo "<a href='viewPost.php?pid=".$pid."' class='commentButton'><button>View</button></a>";
+                  echo "</p>";
+                echo "</article>";
 		
 		    }
 		}
@@ -78,13 +85,13 @@
 	<footer>
 		<nav>
 			<ul>
-				<li class="navButton"><a href="main.php"><button>Home</button></a></li>
+				<li class="navButton"><a href="main.php">Home</a></li>
 				<?php 
 					if (!(isset($_SESSION["loggedIn"]))) {
-	    				echo "<li class='navButton'><a href='login.html'><button>Log In</button></a></li>";
+	    				echo "<li class='navButton'><a href='login.html'>Log In</a></li>";
 					} else {
-					    echo "<li class='navButton'><a href='manageaccount.html'><button>Account</button></a></li>";
-					    echo "<li class='navButton'><a href='logout.php'><button>Log Out</button></a></li>";
+					    echo "<li class='navButton'><a href='manageaccount.html'>Account</a></li>";
+					    echo "<li class='navButton'><a href='logout.php'>Log Out</a></li>";
 					}
 				?>
 			</ul>
