@@ -54,7 +54,7 @@
 		    die("Connection failed: " . $mysqli->connect_error);
 		} 
 		
-		$sql = "SELECT * FROM posts";
+		$sql = "SELECT * FROM posts order by postDate desc";
 		
 		if($result = $mysqli -> query($sql)){
 		    

@@ -62,7 +62,6 @@
     $mysqli -> close();
     
     header($header);
-    exit;
     
 
 ?>

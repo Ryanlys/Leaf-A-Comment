@@ -1,0 +1,106 @@
+<?php
+	session_start();
+
+	$servername = "localhost";
+	$dbUsername = "root";
+	$password = "";
+	$dbName = "test";
+
+	$keyword = $_REQUEST["keyword"];
+	if (is_null($keyword))
+	{
+		$keyword = "%%";
+	}
+	else
+	{
+		$keyword = "%".$keyword."%";
+	}
+
+	$conn = mysqli_connect($servername,$dbUsername,$password,$dbName);
+	$sql = "select pid,title,body,img,postDate,users.username, from posts, users where posts.uid = users.uid and title like $keyword";
+	$stmt = mysqli_prepare($conn,$sql);
+	mysqli_stmt_bind_param($stmt,"i",$_GET["pid"]);
+	mysqli_stmt_execute($stmt);
+
+	$result = mysqli_stmt_get_result($stmt);
+	
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Leaf A Comment</title>
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/forall.css">
+<link rel="stylesheet" href="css/search.css">
+</head>
+<body>
+	<header id="top">
+		<img id="logo" alt="whoops" src="images/logo.png">
+		<nav>
+			<ul>
+				<li class="navButton"><a href="main.html"><button>Home</button></a></li>
+				<li class="navButton"><a href="manageaccount.html"><button>Account</button></a></li>
+				<li class="navButton"><a href="login.html"><button>Log In</button></a></li>
+			</ul>	
+		</nav>
+	</header>
+	
+	<main>
+		<p><a href="newPost.html" id=newPostButton><button>New Post</button></a>
+		<form id="search" method="get" action="search.php">
+			<input id="searchBar" type="text" name="search" placeholder="type in keyword"><button type="submit">Search</button>
+		</form>
+		</p>
+
+		<?php
+			while($getData = mysqli_fetch_assoc($result);)
+			{
+				$pid = $getData["pid"];
+				$title = $getData["title"];
+				$desc = $getData["body"];
+				$img = $getData["img"];
+				$date = $getData["postDate"];
+				$username = $getData["username"];
+
+				echo "<article class='post'><img class='thumbnail' src='images/$img'><div class='content'><h1>$title</h1>
+				<p class='desc'>$desc</p></div> <p class='things'><time datetime='$date'>$date</time><br>
+				<a href='viewpost.php?pid=$pid' class='commentButton'><button> View</button></a>";
+			}
+
+		?>
+		
+		<article class="post">
+			<img class="thumbnail" src="images/leaf3.jpg">
+			<div class="content">
+				<h1>
+					This is a leaf.
+				</h1>
+				<p class="desc">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis vitae elit non commodo. Fusce vitae diam eu neque porttitor.
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dui neque, pellentesque vel elit sit amet, vestibulum finibus velit. Curabitur tellus nisl, pellentesque non magna eu, 
+					varius posuere dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per.
+				</p>	
+			</div>
+			<p class="things">
+				<time datetime="2020-02-16">2020/2/16</time><br>
+				<a href="samplePost.html" class="commentButton"><button>Comment</button></a>
+			</p>
+		</article>
+		
+	</main>
+	
+	<footer>
+		<nav>
+			<ul>
+				<li class="navButton"><a href="main.html">Home</a></li>
+				<li class="navButton"><a href="account.html">Account</a></li>
+				<li class="navButton"><a href="login.html">Log In</a></li>
+			</ul>
+		</nav>
+		<p>2020 &copy; Leaf A Comment</p>
+		<a href="#top">back to top</a></span></p>
+	</footer>
+</body>
+</html>

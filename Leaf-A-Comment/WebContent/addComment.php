@@ -50,7 +50,7 @@
 	$numComm = $getData["numComment"];
 	$numComm = $numComm+1;
 
-	$sql = "alter table posts set numComment = ? where pid = ?";
+	$sql = "update posts set numComment = ? where pid = ?";
 	$stmt = mysqli_prepare($conn,$sql);
 	mysqli_stmt_bind_param($stmt,"ii",$numComm,$pid);
 	mysqli_stmt_execute($stmt);

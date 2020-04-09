@@ -1,8 +1,15 @@
 <?php
 	session_start();
-	if (isset($_SESSION["uid"]) && isset($_SESSION["admin"])) {
+	if (isset($_SESSION["uid"])) {
     	$uid = $_SESSION["uid"];
-    	$admin = $_SESSION["admin"];
+	}
+	if (isset($_SESSION["admin"]))
+	{
+		$admin = true;
+	}
+	else
+	{
+		$admin = false;
 	}
 	
 	$servername = "localhost";
@@ -64,7 +71,7 @@
 	</header>
 	<main>
     	<?php 
-    	   if (!(isset($_SESSION["loggedIn"]))) {
+    	   if ((isset($_SESSION["loggedIn"]))) {
     	       echo "<p><a href='newPost.html' id=newPostButton><button>New Post</button></a></p><br>";
     	   }
     	?>
@@ -132,12 +139,14 @@
 					if ($uid == $commentOwner)
 					{
 						echo "<div class='divComment'id='$cid' data-depth='$depth' data-parent='$parent'><p class='user'>$uname <time datetime='$date'>$date</time></p><br>";
-						echo "<p class='comment'>$body</p><br><button class='replyButton'>Reply</button><button class='editComment'>Edit</button></div><br>";
+						echo "<p class='comment'>$body</p><br><button class='replyButton'>Reply</button><button class='editComment'>Edit</button><br>";
+						echo "<button class='collapse'>Collapse</button></div><br>";
 					}
 					else
 					{
 						echo "<div class='divComment'id='$cid' data-depth='$depth' data-parent='$parent'><p class='user'>$uname <time datetime='$date'>$date</time></p><br>";
-						echo "<p class='comment'>$body</p><br><button class='replyButton'>Reply</button></div><br>";
+						echo "<p class='comment'>$body</p><br><button class='replyButton'>Reply</button><br>";
+						echo "<button class='collapse'>Collapse</button></div><br>";
 					}
 					
 				};

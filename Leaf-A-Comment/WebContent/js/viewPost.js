@@ -35,7 +35,7 @@ window.onload = function()
 		$(".editComment").each(function(){$(this).attr("disabled",true)});
 		let text1 = "<form method=\"post\" action=\"addComment.php\" id=\"replyForm\">\
 		<fieldset><label>Comment</label><br><textarea rows=\"5\" cols=\"50\" name=\"desc\" id=\"tarea\">\
-		</textarea><input type=\"hidden\" name=\"parent\" value=\""+$(this).parent().attr("id")+"\"><input type=\"hidden\" name=\"parent\" value=\""+pid+"\"></fieldset>\
+		</textarea><input type=\"hidden\" name=\"parent\" value=\""+$(this).parent().attr("id")+"\"><input type=\"hidden\" name=\"pid\" value=\""+pid+"\"></fieldset>\
 		<br><button type=\"submit\" id=\"submitReply\">Submit</button><button type=\"button\" id=\"cancelReply\">Cancel</button></form>";
 		$(this).after(text1);
 		$("#tarea").css("background-color","white");
@@ -75,6 +75,22 @@ window.onload = function()
 		}); 
 	});
 
+	$(".collapse").click(function()
+	{
+		if ($(this).html() == "Collapse")
+		{
+			$(this).parent().find("div").hide();
+			$(this).html("Show");
+		}
+		else
+		{
+			$(this).parent().find("div").show();
+			$(this).html("Collapse");
+		}
+		
+	});
+
+	
 
 	$(".divComment").each(function()
 	{
@@ -82,10 +98,16 @@ window.onload = function()
 		{
 			$(this).css("margin-left",parseInt(($(this).attr("data-depth")))*10);
 			var parent = $(this).attr("data-parent");
-			var parent = "#"+parent;
+			parent = "#"+parent;
 			$(this).appendTo($(parent));
 		}
 	});
 
-
+	$(".collapse").each(function()
+	{
+		if ($(this).next("div").length == 0)
+		{
+			$(this).hide();
+		}
+	});
 };
