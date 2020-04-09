@@ -32,6 +32,7 @@
 					    {
 					        echo "<li class='navButton'><a href='adminIndex.php'><button>Admin</button></a></li>";
 					    }
+					}
 				?>
 			</ul>
 			
@@ -99,7 +100,5 @@
 		<p>2020 &copy; Leaf A Comment</p>
 		<a href="#top">back to top</a></span></p>
 	</footer>
-
-
 </body>
 </html>
