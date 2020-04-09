@@ -1,5 +1,24 @@
 <?php 
+   
     session_start();
+    
+    $mysqli = new mysqli("localhost", "root","", "test");
+    
+    if($mysqli -> connect_errno){
+        die("Connection failed: " . $mysqli->connect_error);
+    }
+    
+    $x = 1;
+    
+    if ($stmt = $mysqli -> prepare("INSERT INTO report(clicks) VALUES (?);")){
+        
+        $stmt -> bind_param("i",$x);
+        $stmt -> execute();
+        $stmt -> close();
+        $registered = true;
+        
+    } 
+       
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,10 +61,11 @@
 	<main>
 		<?php 
 		  if ((isset($_SESSION["loggedIn"]))) {
-	    	echo "<p><a href='newPost.html' id=newPostButton><button>New Post</button></a>";
-	    	echo "<a href='new.php'><button> Newest </button></a>";
-	    	echo "<a href='old.php'><button> Oldest </button></a>";
-	    	echo "</p><br>";
+	    	echo "<p><a href='newPost.html' id=newPostButton><button>New Post</button></a></p>";
+	    	echo "<div><a href='new.php'>Newest Posts</a>";
+	    	echo " ";
+	    	echo "<a href='old.php'>Oldest Posts</a></div>";
+	    	echo "<br>";
 		  }
 		
 		$mysqli = new mysqli("localhost", "root","", "test");
@@ -92,7 +112,8 @@
 	    				echo "<li class='navButton'><a href='login.html'>Log In</a></li>";
 					} else {
 					    echo "<li class='navButton'><a href='manageaccount.html'>Account</a></li>";
-					    echo "<li class='navButton'><a href='logout.php'>Log Out</a></li>";
+					    echo " ";
+					    echo "<li class='navButton'><a href='logout.php'>Logout</a></li>";
 					}
 				?>
 			</ul>

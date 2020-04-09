@@ -21,7 +21,8 @@
 			//console.log(data);
 			var html = "";
 			for (var a=0; a < data.length; a++){
-				var date = data[a].date;
+				var date = data[a].reportDate;
+				//dates.push(date.substring(0,10));
 				dates.push(date);
 				var clicks = data[a].clicks;
 				clickss.push(clicks);
