@@ -66,8 +66,17 @@
 			{
 				$username = $getData["username"];
 				$uid = $getData["uid"];
+				$enabled = $getData["enabled"];
 				echo "<p>";
-				echo "<a href='deleteUser.php?uid=".$uid."'>Remove</a>";
+				echo "<a href='deleteUser.php?uid=".$uid."'>Remove</a>\n";
+				if ($enabled == 1)
+				{
+					echo "<a href='disableUser.php?uid=$uid'>Disable</a>";
+				}
+				else
+				{
+					echo "<a href='enableUser.php?uid=$uid'>Enable</a>";
+				}
 				echo " ".$username;
 				
 				$admintrue = False;

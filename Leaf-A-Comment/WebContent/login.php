@@ -25,7 +25,7 @@
         }
     }
     
-    $sql = "SELECT uid, username, password FROM users";
+    $sql = "SELECT uid, username, password, enabled FROM users";
     
     $header="Location: main.php";
     
@@ -36,9 +36,18 @@
             $a = $fieldinfo["username"];
             $b = $fieldinfo["password"];
             $c = $fieldinfo["uid"];
+            $d = $fieldinfo["enabled"];
             if (strcasecmp($a, $username)==0 && strcasecmp($b, $password)==0){
                 $_SESSION["loggedIn"] = true;
                 $_SESSION["uid"] = $c;
+                if ($d == 1)
+                {
+                    $_SESSION["enabled"] = true;
+                }
+                else
+                {
+                    $_SESSION["enabled"] = false;
+                }
             }
         }
         $result -> free_result();   

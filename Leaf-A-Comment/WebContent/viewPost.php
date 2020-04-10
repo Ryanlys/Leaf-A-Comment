@@ -18,7 +18,7 @@
 	$dbName = "test";
 
 	$conn = mysqli_connect($servername,$dbUsername,$password,$dbName);
-	$sql = "select title,body,img,postDate,users.username,posts.uid, enabled from posts, users where pid = ? and posts.uid = users.uid";
+	$sql = "select title,body,img,postDate,users.username,posts.uid from posts, users where pid = ? and posts.uid = users.uid";
 	$stmt = mysqli_prepare($conn,$sql);
 	mysqli_stmt_bind_param($stmt,"i",$_GET["pid"]);
 	mysqli_stmt_execute($stmt);
@@ -33,7 +33,6 @@
 	$date = substr($datetime, 0,10);
 	$username = $getData["username"];
 	$postOwner = $getData["uid"];
-	$enabled = $getData["enabled"];
 
 	$pid = $_GET["pid"];
 
@@ -74,7 +73,11 @@
 	<main>
     	<?php 
     	   if (isset($_SESSION["loggedIn"])) {
-    	       echo "<p><a href='newPost.html' id=newPostButton><button>New Post</button></a></p><br>";
+    	   		if($_SESSION["enabled"] == true)
+    	   		{
+    	   			echo "<p><a href='newPost.html' id=newPostButton><button>New Post</button></a></p><br>";
+    	   		}
+    	       
     	   }
     	?>
     	<article class="post">
@@ -110,9 +113,17 @@
 			</p>
 		</article>
 		<?php
-			if(isset($_SESSION["loggedIn"]) && ($uid == $postOwner || $admin == true) && ($enabled == TRUE))
+			if(isset($_SESSION["loggedIn"]) && ($_SESSION["enabled"] == 1))
 			{
-				echo "<section><button id='mainReply'> Reply </button> <a href='editPost.php?pid=$pid'><button id='editPost'> Edit </button></a></section>";
+				if(($uid == $postOwner || $admin == true))
+				{
+					echo "<section><button id='mainReply'> Reply </button> <a href='editPost.php?pid=$pid'><button id='editPost'> Edit </button></a></section>";
+				}
+				else
+				{
+					echo "<section><button id='mainReply'> Reply </button></section>";
+				}
+				
 			}
 		?>	
 		<section class="comments">
@@ -134,16 +145,21 @@
 					$parent = $getData["parent"];
 					$commentOwner = $getData["uid"];
 
-					if ($uid == $commentOwner)
+					if (($uid == $commentOwner) && ($_SESSION["enabled"] == true))
 					{
 						echo "<div class='divComment'id='$cid' data-depth='$depth' data-parent='$parent'><p class='user'>$uname <time datetime='$date'>$date</time></p><br>";
 						echo "<p class='comment'>$body</p><br><button class='replyButton'>Reply</button><button class='editComment'>Edit</button><br>";
 						echo "<button class='collapse'>Collapse</button></div><br>";
 					}
-					else
+					else if (($uid != $commentOwner) && ($_SESSION["enabled"] == true))
 					{
 						echo "<div class='divComment'id='$cid' data-depth='$depth' data-parent='$parent'><p class='user'>$uname <time datetime='$date'>$date</time></p><br>";
 						echo "<p class='comment'>$body</p><br><button class='replyButton'>Reply</button><br>";
+						echo "<button class='collapse'>Collapse</button></div><br>";
+					}
+					else
+					{
+						echo "<div class='divComment'id='$cid' data-depth='$depth' data-parent='$parent'><p class='user'>$uname <time datetime='$date'>$date</time></p><br>";
 						echo "<button class='collapse'>Collapse</button></div><br>";
 					}
 					

@@ -60,8 +60,12 @@
 	</header>
 	<main>
 		<?php 
-		  if (isset($_SESSION["loggedIn"])) {
-	    		echo "<p><a href='newPost.html' id=newPostButton><button>New Post</button></a></p>";
+		  if (isset($_SESSION["loggedIn"])) 
+			{
+				if ($_SESSION["enabled"] == 1)
+				{
+					echo "<p><a href='newPost.html' id=newPostButton><button>New Post</button></a></p>";
+				}
 	    	}
 	    	echo "<div><a href='new.php'><button>Newest Posts</button></a>";
 	    	echo "<a href='old.php'><button>Oldest Posts</button></a></div>";

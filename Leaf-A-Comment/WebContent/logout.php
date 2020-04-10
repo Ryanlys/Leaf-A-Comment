@@ -5,6 +5,7 @@ session_start();
 	    unset($_SESSION["loggedIn"]);
 	    unset($_SESSION["uid"]);
 	    unset($_SESSION["admin"]);
+	    unset($_SESSION["enabled"]);
 	    header("Location: main.php");
 	    exit;
 	} else

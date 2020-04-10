@@ -56,6 +56,7 @@
 			<button type="submit">Search</button><input id="anotherSearchBar" type="text" name="search" placeholder="type in keyword">
 		</form>
 		</p>
+		<br>
 		<?php 
     	   if (isset($_SESSION["loggedIn"])) {
     	       echo "<p><a href='newPost.html' id=newPostButton><button>New Post</button></a></p><br>";
