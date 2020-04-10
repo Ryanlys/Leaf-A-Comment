@@ -41,12 +41,12 @@
 	</header>
 	<main>
 		<?php 
-		  if ((isset($_SESSION["loggedIn"]))) {
-	    	echo "<p><a href='newPost.html' id=newPostButton><button>New Post</button></a>";
-	    	echo "<a href='new.php'><button> Newest </button></a>";
-	    	echo "<a href='old.php'><button> Oldest </button></a>";
-	    	echo "</p><br>";
-		  }
+		  if (isset($_SESSION["loggedIn"])) {
+	    		echo "<p><a href='newPost.html' id=newPostButton><button>New Post</button></a></p>";
+	    	}
+	    	echo "<div><a href='new.php'><button>Newest Posts</button></a>";
+	    	echo "<a href='old.php'><button>Oldest Posts</button></a></div>";
+	    	echo "<br>";
 		
 		$mysqli = new mysqli("localhost", "root","", "test");
 		

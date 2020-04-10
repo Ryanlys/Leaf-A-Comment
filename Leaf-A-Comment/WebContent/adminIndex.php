@@ -2,7 +2,7 @@
 	session_start();
 	
 	if (!isset($_SESSION["admin"])){
-	   header("Location: main.php");
+	   header("Location: main.html");
 	   exit;
 	}
 
@@ -45,9 +45,10 @@
 		<nav>
 			<ul>
 				<li class="navButton"><a href="main.php"><button>Home</button></a></li>
-				<li class="navButton"><a href="manageaccount.html"><button>Account</button></a></li>
-				<li class="navButton"><a href="logout.php"><button>Log Out</button></a></li>
-				<li class="navButton"><a href="report.html"><button>Report</button></a></li>
+				<?php 
+				    echo "<li class='navButton'><a href='manageaccount.html'><button>Account</button></a></li>";
+					echo "<li class='navButton'><a href='logout.php'><button>Log Out</button></a></li>";
+				?>
 			</ul>	
 		</nav>
 	</header>
@@ -95,10 +96,11 @@
 	<footer>
 		<nav>
 			<ul>
-				<li class="navButton"><a href="main.php">Home</a></li>
-				<li class="navButton"><a href="manageaccount.html">Account</a></li>
-				<li class="navButton"><a href="logout.php">Log Out</a></li>
-				<li class="navButton"><a href="report.html">Report</a></li>
+				<li class="navButton"><a href="main.php"><button>Home</button></a></li>
+				<?php 
+					echo "<li class='navButton'><a href='manageaccount.html'><button>Account</button></a></li>";
+					echo "<li class='navButton'><a href='logout.php'><button>Log Out</button></a></li>";
+				?>
 			</ul>
 		</nav>
 		<p>2020 &copy; Leaf A Comment</p>

@@ -60,13 +60,13 @@
 	</header>
 	<main>
 		<?php 
-		  if ((isset($_SESSION["loggedIn"]))) {
-	    	echo "<p><a href='newPost.html' id=newPostButton><button>New Post</button></a></p>";
-	    	echo "<div><a href='new.php'>Newest Posts</a>";
-	    	echo " ";
-	    	echo "<a href='old.php'>Oldest Posts</a></div>";
+		  if (isset($_SESSION["loggedIn"])) {
+	    		echo "<p><a href='newPost.html' id=newPostButton><button>New Post</button></a></p>";
+	    	}
+	    	echo "<div><a href='new.php'><button>Newest Posts</button></a>";
+	    	echo "<a href='old.php'><button>Oldest Posts</button></a></div>";
 	    	echo "<br>";
-		  }
+		  
 		
 		$mysqli = new mysqli("localhost", "root","", "test");
 		

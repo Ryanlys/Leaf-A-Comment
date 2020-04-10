@@ -6,6 +6,9 @@
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/forall.css">
 <link rel="stylesheet" href="css/newPost.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="js/newPost.js"></script>
 </head>
 <body>
 	<header>
@@ -29,7 +32,7 @@
 			<fieldset>
 				<legend>New Post</legend>
 				<label>Title</label>
-				<input type="text" name="title"> <br><br>
+				<input type="text" name="title" required> <br><br>
 				<label>Description</label><br>
 				<textarea rows="5" cols="50" name="desc"></textarea> <br><br>
 				<label>Select a file</label> <br>
@@ -37,7 +40,7 @@
 			</fieldset>
 			<br>
 			<button type="submit">Submit</button>
-			<button type="button">Cancel</button>
+			<button id="123" type="button">Cancel</button>
 		</form>
 		
 	</main>

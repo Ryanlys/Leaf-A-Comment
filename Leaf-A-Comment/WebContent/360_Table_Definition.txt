@@ -2,7 +2,6 @@ drop table if exists comments ;
 drop table if exists posts ;
 drop table if exists users ;
 drop table if exists admins;
-drop table if exists report;
 
 create table users (
 uid int auto_increment,
@@ -11,7 +10,7 @@ lastname varchar(100),
 username varchar(100),
 password varchar(16),
 email varchar(100),
-pp varchar(32),
+enabled boolean, 
 primary key (uid)
 );
 
@@ -45,18 +44,11 @@ create table admins(
 	uid int
 );
 
-create table report(
-	reportDate timestamp not null default current_timestamp,
-	clicks int,
-	primary key(reportDate)
-);
-
 insert into admins values (1);
 
-insert into users(firstname, lastname, username, password, email, pp) values ('Ryan', 'Test', 'admin0', '12345', 'ryan@email.com', 'default.png');
-insert into users(firstname, lastname, username, password, email, pp) values ('Nat', 'Nat', 'notadmin0', '00000', 'nat@nat.com', 'default.png');
-insert into users(firstname, lastname, username, password, email, pp) values ('del', 'del', 'imadelete', 'password', 'leafacomment@gmail.com', 'default.png');
+insert into users(firstname, lastname, username, password, email) values ('Ryan', 'Test', 'admin0', '12345', 'ryan@email.com');
+insert into users(firstname, lastname, username, password, email) values ('Nat', 'Nat', 'notadmin0', '00000', 'nat@nat.com');
+insert into users(firstname, lastname, username, password, email) values ('del', 'del', 'imadelete', 'password', 'leafacomment@gmail.com');
 
 insert into posts(numComment, title, body, uid, img) values (0, 'My first post', 'This is my very first post',1,"leaf2.jpg");
 insert into posts(numComment, title, body, uid, img) values (0, 'Saw some Barberries Today', 'They are shrubs that can range from compact, 3-feet tall plants to 8 feet or more; whichever variety you choose, they add a pop to your garden. Pair them with lime-green plants for an especially eye-catching display. These shrubs do have thorns, so be careful when planting in a yard where children will play.',2,"barberries.jpg");
-insert into posts(numComment, title, body, uid, img) values (0, 'First Fall Experience', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',2,"leaf.jpg");

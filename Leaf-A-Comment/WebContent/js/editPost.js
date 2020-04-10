@@ -14,7 +14,7 @@ window.onload = function()
 			}
 		});
 
-		$("cancelEdit").click(function()
+		$("#cancelEdit").click(function()
 		{
 			var r = confirm("Are you sure you want to discard edit?");
 			if (r)

@@ -18,7 +18,7 @@
 	$dbName = "test";
 
 	$conn = mysqli_connect($servername,$dbUsername,$password,$dbName);
-	$sql = "select title,body,img,postDate,users.username,posts.uid from posts, users where pid = ? and posts.uid = users.uid";
+	$sql = "select title,body,img,postDate,users.username,posts.uid, enabled from posts, users where pid = ? and posts.uid = users.uid";
 	$stmt = mysqli_prepare($conn,$sql);
 	mysqli_stmt_bind_param($stmt,"i",$_GET["pid"]);
 	mysqli_stmt_execute($stmt);
@@ -33,6 +33,7 @@
 	$date = substr($datetime, 0,10);
 	$username = $getData["username"];
 	$postOwner = $getData["uid"];
+	$enabled = $getData["enabled"];
 
 	$pid = $_GET["pid"];
 
@@ -109,7 +110,7 @@
 			</p>
 		</article>
 		<?php
-			if(isset($_SESSION["loggedIn"]) && ($uid == $postOwner || $admin == true))
+			if(isset($_SESSION["loggedIn"]) && ($uid == $postOwner || $admin == true) && ($enabled == TRUE))
 			{
 				echo "<section><button id='mainReply'> Reply </button> <a href='editPost.php?pid=$pid'><button id='editPost'> Edit </button></a></section>";
 			}
@@ -155,14 +156,13 @@
 	<footer>
 		<nav>
 			<ul>
-				<li class="navButton"><a href="main.php">Home</a></li>
+				<li class="navButton"><a href="main.php"><button>Home</button></a></li>
 				<?php 
 					if (!(isset($_SESSION["loggedIn"]))) {
-	    				echo "<li class='navButton'><a href='login.html'>Log In</a></li>";
+	    				echo "<li class='navButton'><a href='login.html'><button>Log In</button></a></li>";
 					} else {
-					    echo "<li class='navButton'><a href='manageaccount.html'>Account</a></li>";
-					    echo " ";
-					    echo "<li class='navButton'><a href='logout.php'>Log Out</a></li>";
+					    echo "<li class='navButton'><a href='manageaccount.html'><button>Account</button></a></li>";
+					    echo "<li class='navButton'><a href='logout.php'><button>Log Out</button></a></li>";
 					}
 				?>
 			</ul>

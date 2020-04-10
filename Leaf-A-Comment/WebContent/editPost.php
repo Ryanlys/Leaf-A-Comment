@@ -4,7 +4,10 @@
 	include "loggedin.php";
 	
 	$uid = $_SESSION["uid"];
-	$admin = $_SESSION["admin"]; 
+	if (isset($_SESSION["admin"]))
+	{
+		$admin = $_SESSION["admin"]; 
+	}
 	$servername = "localhost";
 	$dbUsername = "root";
 	$password = "";
