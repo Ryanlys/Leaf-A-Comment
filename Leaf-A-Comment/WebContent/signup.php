@@ -30,7 +30,7 @@
             if (isset($_POST["pic"])){
                 $profilepicture = $_FILES["pic"]["name"];
             } else {
-                $profilepicture = "default.png";
+                $profilepicture = "default.jpg";
             }
             
         }

@@ -45,7 +45,7 @@
 					} 
 					else
 					{
-					    echo "<li class='navButton'><a href='manageaccount.html'><button>Account</button></a></li>";
+					    echo "<li class='navButton'><a href='manageaccount.php?id=".$_SESSION["uid"]."'><button>Account</button></a></li>";
 					    echo "<li class='navButton'><a href='logout.php'><button>Log Out</button></a></li>";
 					    if (isset($_SESSION["admin"]))
 					    {

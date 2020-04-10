@@ -57,7 +57,7 @@
   	{
   		if (!file_exists("C:\\xampp\\htdocs\\360\\images\\userimg\\".$_FILES["pic"]["name"]))
   		{
-  			move_uploaded_file($_FILES["pic"]["tmp_name"], "\\360\\images\\userimg\\".$_FILES["pic"]["name"]);
+  			move_uploaded_file($_FILES["pic"]["tmp_name"], "\\360\\images\\".$_FILES["pic"]["name"]);
   		}
 		
 	}

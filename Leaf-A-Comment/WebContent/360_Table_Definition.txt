@@ -12,6 +12,7 @@ username varchar(100),
 password varchar(16),
 email varchar(100),
 pp varchar(32),
+bio varchar(255),
 enabled boolean default TRUE, 
 primary key (uid)
 );
@@ -54,9 +55,9 @@ create table report(
 
 insert into admins values (1);
 
-insert into users(firstname, lastname, username, password, email, pp) values ('Ryan', 'Test', 'admin0', '12345', 'ryan@email.com', 'default.png');
-insert into users(firstname, lastname, username, password, email, pp) values ('Nat', 'Nat', 'notadmin0', '00000', 'nat@nat.com', 'default.png');
-insert into users(firstname, lastname, username, password, email, pp) values ('del', 'del', 'imadelete', 'password', 'leafacomment@gmail.com', 'default.png');
+insert into users(firstname, lastname, username, password, email, pp) values ('Ryan', 'Test', 'admin0', '12345', 'ryan@email.com', 'default.jpg');
+insert into users(firstname, lastname, username, password, email, pp) values ('Nat', 'Nat', 'notadmin0', '00000', 'nat@nat.com', 'default.jpg');
+insert into users(firstname, lastname, username, password, email, pp) values ('del', 'del', 'imadelete', 'password', 'leafacomment@gmail.com', 'default.jpg');
 
 insert into posts(numComment, title, body, uid, img) values (0, 'My first post', 'This is my very first post',1,"leaf2.jpg");
 insert into posts(numComment, title, body, uid, img) values (0, 'Saw some Barberries Today', 'They are shrubs that can range from compact, 3-feet tall plants to 8 feet or more; whichever variety you choose, they add a pop to your garden. Pair them with lime-green plants for an especially eye-catching display. These shrubs do have thorns, so be careful when planting in a yard where children will play.',2,"barberries.jpg");
