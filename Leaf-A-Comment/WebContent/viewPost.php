@@ -145,7 +145,12 @@
 					$parent = $getData["parent"];
 					$commentOwner = $getData["uid"];
 
-					if (($uid == $commentOwner) && ($_SESSION["enabled"] == true))
+					if(!isset($_SESSION["loggedIn"]))
+					{
+						echo "<div class='divComment'id='$cid' data-depth='$depth' data-parent='$parent'><p class='user'>$uname <time datetime='$date'>$date</time></p><br><p class='comment'>$body</p><br>";
+						echo "<button class='collapse'>Collapse</button></div><br>";
+					}
+					else if (($uid == $commentOwner) && ($_SESSION["enabled"] == true))
 					{
 						echo "<div class='divComment'id='$cid' data-depth='$depth' data-parent='$parent'><p class='user'>$uname <time datetime='$date'>$date</time></p><br>";
 						echo "<p class='comment'>$body</p><br><button class='replyButton'>Reply</button><button class='editComment'>Edit</button><br>";
@@ -155,11 +160,6 @@
 					{
 						echo "<div class='divComment'id='$cid' data-depth='$depth' data-parent='$parent'><p class='user'>$uname <time datetime='$date'>$date</time></p><br>";
 						echo "<p class='comment'>$body</p><br><button class='replyButton'>Reply</button><br>";
-						echo "<button class='collapse'>Collapse</button></div><br>";
-					}
-					else
-					{
-						echo "<div class='divComment'id='$cid' data-depth='$depth' data-parent='$parent'><p class='user'>$uname <time datetime='$date'>$date</time></p><br>";
 						echo "<button class='collapse'>Collapse</button></div><br>";
 					}
 					
