@@ -65,7 +65,7 @@
     }
     
     if (!isset($_SESSION["loggedIn"]))
-        $header = "Location: signup.html";
+        $header = "Location: login.html?err='incorrect'";
         
     
     $mysqli -> close();
