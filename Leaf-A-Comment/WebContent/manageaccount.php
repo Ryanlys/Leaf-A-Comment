@@ -68,9 +68,9 @@
 	<main>
 		<?php
 
-			echo "<img class='thumbnail' src='images\\userimg\\$path'>";
-			echo "<div style='border: 2px solid #debead;'><h1> $fname $lname </h1></div><br>";
-			echo "<div style='border: 2px solid #debead;'><p>$bio</p></div><br><br><br>";
+			echo "<img class='thumbnail' src='images\\userimg\\$path'> <br><br>";
+			echo "Name<br><div style='border: 2px solid #debead;'><h1> $fname $lname </h1></div><br>";
+			echo "Bio<br><div style='border: 2px solid #debead;'><p>$bio</p></div><br><br><br>";
 
 			if($_SESSION["uid"] == $profileID)
 			{
