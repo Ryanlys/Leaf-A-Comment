@@ -22,6 +22,9 @@
 
 </script>
 <title>manageaccount page</title>
+<?php
+	session_Start();
+?>
 </head>
 <body>
 
@@ -43,36 +46,20 @@
 	</header>
 	
 	<main>
-		<h1>Anything you'd like to change?</h1>
+		$profileID = $_REQUEST["id"];
+
+		if($_SESSION["uid"] == $profileID)
+		{
+			echo "<h1>Anything you'd like to change?</h1>";
+			echo "<form name="manage" method="post" action="manageaccountChanges.php" onSubmit="return validateForm()">";
+			echo "<fieldset><p id="firstname"><label>first name:</label><input type="text" name="firstname"></p><br><br>";
+			echo "<p id="lastname"><label>last name:</label><input type="text" name="lastname"></p><br><br>";
+			echo "<p id="newpassword"><label>new password:</label><input type="password" name="newpassword" pattern = "([A-z0-9]){7,14}"></p><br><br>";
+			echo "<p id="repassword"><label>retype new password:</label><input type="password" name="renewpassword"></p><br><br>";
+			echo "<button type="submit">change</button><button type="reset">reset</button></fieldset></form>";
+		}
 		
-		<form name="manage" method="post" action="manageaccount.php" onSubmit="return validateForm()">
-		<fieldset>
-		
-		<p id="firstname">
-			<label>first name:</label>
-			<input type="text" name="firstname">
-		</p>
-		
-		<p id="lastname">
-			<label>last name:</label>
-			<input type="text" name="lastname">
-		</p>
-		
-		<p id="newpassword">
-			<label>new password:</label>
-			<input type="password" name="newpassword" pattern = "([A-z0-9]){7,14}">
-		</p>
-		
-		<p id="repassword">
-			<label>retype new password:</label>
-			<input type="password" name="renewpassword">
-		</p>
-		
-		<button type="submit">change</button>
-		<button type="reset">reset</button>
-		
-		</fieldset>
-		</form>
+	
 	</main>
 	<footer>
 		<nav>

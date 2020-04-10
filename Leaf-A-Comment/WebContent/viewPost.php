@@ -84,7 +84,7 @@
 			<?php 
 				if($img != null)
 				{
-					echo "<img class='thumbnail' src= 'images\\userimg\\$img' >";
+					echo "<img class='thumbnail' src= 'images\\$img' >";
 				}
 			?>
 			<div class="content">
@@ -106,7 +106,7 @@
 				if (isset($_SESSION["admin"])){
 				    echo "<a href='adminIndex.php?usersearch=".$username."'>".$username."</a><br>";
 				} else {
-				    echo "<a href=\"\">$username</a><br>";
+				    echo "<a href='manageaccount.php?id=$postOwner'>$username</a><br>";
 				}
 				
 				?>
